@@ -1,0 +1,18 @@
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\obj\Debug\GUI.csproj.AssemblyReference.cache
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\obj\Debug\Parcial_2___Campo.Properties.Resources.resources
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\obj\Debug\GUI.csproj.GenerateResource.cache
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\obj\Debug\GUI.csproj.CoreCompileInputs.cache
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\bin\Debug\Parcial 2 - Campo.exe.config
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\bin\Debug\Parcial 2 - Campo.exe
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\bin\Debug\Parcial 2 - Campo.pdb
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\bin\Debug\BE.dll
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\bin\Debug\BLL.dll
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\bin\Debug\DAL.dll
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\bin\Debug\BE.pdb
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\bin\Debug\BLL.pdb
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\bin\Debug\DAL.pdb
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\obj\Debug\GUI.csproj.Up2Date
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\obj\Debug\Parcial 2 - Campo.exe
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\obj\Debug\Parcial 2 - Campo.pdb
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\obj\Debug\Parcial 2 - Campo.exe.config
+C:\Users\nachi\source\repos\Parcial 2 - Campo\Parcial 2 - Campo\obj\Debug\Parcial_2___Campo.Form1.resources

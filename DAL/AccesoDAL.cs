@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
-using System.Configuration;
 
 namespace DAL
 {
@@ -14,8 +13,7 @@ namespace DAL
 
         protected void AbrirConexion()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["RestaurantePedidos"].ConnectionString;
-            conexion = new SqlConnection(connectionString);
+            conexion = new SqlConnection($@"Data Source=DESKTOP-7ESF09C\SQLEXPRESS;Initial Catalog=McDonalds;Trusted_Connection=True");
             conexion.Open();
         }
 
@@ -47,7 +45,6 @@ namespace DAL
         protected DataTable Leer(string sql, List<SqlParameter> parametros = null)
         {
             AbrirConexion();
-
             DataTable table = new DataTable();
             SqlDataAdapter adaptador = new SqlDataAdapter();
 
@@ -60,7 +57,6 @@ namespace DAL
         protected int Escribir(string sql, List<SqlParameter> parametros = null)
         {
             int res;
-            AbrirConexion();
             SqlCommand cmd = CrearComando(sql, parametros);
 
             try
@@ -75,7 +71,6 @@ namespace DAL
             cmd.Parameters.Clear();
             cmd.Dispose();
 
-            CerrarConexion();
             return res;
         }
 
@@ -133,7 +128,6 @@ namespace DAL
         protected object EscribirEscalar(string sql, List<SqlParameter> parametros = null)
         {
             object res;
-            AbrirConexion();
             SqlCommand cmd = CrearComando(sql, parametros);
 
             try
@@ -148,7 +142,6 @@ namespace DAL
             cmd.Parameters.Clear();
             cmd.Dispose();
 
-            CerrarConexion();
             return res;
         }
 

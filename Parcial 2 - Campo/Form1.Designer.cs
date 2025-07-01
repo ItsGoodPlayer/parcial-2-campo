@@ -49,7 +49,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 17);
+            this.label1.Size = new System.Drawing.Size(147, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Seleccionar Combo";
             // 
@@ -81,7 +81,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(12, 75);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(154, 17);
+            this.label2.Size = new System.Drawing.Size(168, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Porciones Adicionales";
             // 
@@ -90,7 +90,7 @@
             this.chkPorciones.FormattingEnabled = true;
             this.chkPorciones.Location = new System.Drawing.Point(15, 95);
             this.chkPorciones.Name = "chkPorciones";
-            this.chkPorciones.Size = new System.Drawing.Size(200, 84);
+            this.chkPorciones.Size = new System.Drawing.Size(200, 79);
             this.chkPorciones.TabIndex = 4;
             this.chkPorciones.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chkPorciones_ItemCheck);
             // 
@@ -100,7 +100,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label3.Location = new System.Drawing.Point(12, 195);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 17);
+            this.label3.Size = new System.Drawing.Size(108, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "Pedido Actual";
             // 
@@ -118,17 +118,17 @@
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.lblTotal.ForeColor = System.Drawing.Color.Red;
+            this.lblTotal.ForeColor = System.Drawing.Color.Black;
             this.lblTotal.Location = new System.Drawing.Point(15, 325);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(76, 20);
+            this.lblTotal.Size = new System.Drawing.Size(79, 20);
             this.lblTotal.TabIndex = 7;
             this.lblTotal.Text = "Total: $0";
             // 
             // btnFinalizarPedido
             // 
-            this.btnFinalizarPedido.BackColor = System.Drawing.Color.Blue;
-            this.btnFinalizarPedido.ForeColor = System.Drawing.Color.White;
+            this.btnFinalizarPedido.BackColor = System.Drawing.SystemColors.Control;
+            this.btnFinalizarPedido.ForeColor = System.Drawing.Color.Black;
             this.btnFinalizarPedido.Location = new System.Drawing.Point(230, 320);
             this.btnFinalizarPedido.Name = "btnFinalizarPedido";
             this.btnFinalizarPedido.Size = new System.Drawing.Size(100, 30);
@@ -143,7 +143,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label4.Location = new System.Drawing.Point(350, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(133, 17);
+            this.label4.Size = new System.Drawing.Size(154, 17);
             this.label4.TabIndex = 9;
             this.label4.Text = "Historial de Pedidos";
             // 
@@ -152,7 +152,7 @@
             this.lstHistorial.FormattingEnabled = true;
             this.lstHistorial.Location = new System.Drawing.Point(353, 35);
             this.lstHistorial.Name = "lstHistorial";
-            this.lstHistorial.Size = new System.Drawing.Size(300, 144);
+            this.lstHistorial.Size = new System.Drawing.Size(300, 134);
             this.lstHistorial.TabIndex = 10;
             this.lstHistorial.SelectedIndexChanged += new System.EventHandler(this.lstHistorial_SelectedIndexChanged);
             // 
@@ -162,7 +162,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label5.Location = new System.Drawing.Point(350, 195);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(127, 17);
+            this.label5.Size = new System.Drawing.Size(141, 17);
             this.label5.TabIndex = 11;
             this.label5.Text = "Detalle del Pedido";
             // 

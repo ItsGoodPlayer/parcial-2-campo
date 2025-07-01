@@ -13,6 +13,7 @@ namespace DAL
             List<Combo> combos = new List<Combo>();
             
             string sql = "SELECT Id, Nombre, Precio, Descripcion, Tipo FROM Combos ORDER BY Id";
+
             DataTable tabla = Leer(sql);
 
             foreach (DataRow row in tabla.Rows)
