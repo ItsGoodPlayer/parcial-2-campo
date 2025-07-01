@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>f237dba6-e5f0-4829-b07f-0f6868195d9f</ProjectGuid>
+    <ProjectGuid>{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BE</RootNamespace>
@@ -47,7 +47,20 @@
     <Reference Include="System.Xml"/>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Combo.cs" />
+    <Compile Include="ComboBasico.cs" />
+    <Compile Include="ComboEspecial.cs" />
+    <Compile Include="ComboFamiliar.cs" />
+    <Compile Include="IPedidoComponent.cs" />
+    <Compile Include="PorcionDecorator.cs" />
+    <Compile Include="QuesoDecorator.cs" />
+    <Compile Include="CarneDecorator.cs" />
+    <Compile Include="TomateDecorator.cs" />
+    <Compile Include="PapasDecorator.cs" />
+    <Compile Include="Pedido.cs" />
+    <Compile Include="PorcionAdicional.cs" />
+    <Compile Include="TipoCombo.cs" />
+    <Compile Include="TipoPorcion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

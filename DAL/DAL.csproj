@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8FDC22B3-9A6A-4B58-9271-78AAD2F6B82D}</ProjectGuid>
+    <ProjectGuid>{E89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DAL</RootNamespace>
@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,8 +43,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDAL.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="ComboDAL.cs" />
+    <Compile Include="PedidoDAL.cs" />
+    <Compile Include="PorcionAdicionalDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BE\BE.csproj">
+      <Project>{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}</Project>
+      <Name>BE</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

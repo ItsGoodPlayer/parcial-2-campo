@@ -3,46 +3,48 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
+using System.Configuration;
 
 namespace DAL
 {
-    public class AccesoDAL
+    public abstract class AccesoDAL
     {
-        private SqlConnection conexion;
-        private SqlTransaction transaccion;
+        protected SqlConnection conexion;
+        protected SqlTransaction transaccion;
 
-        public void AbrirConexion()
+        protected void AbrirConexion()
         {
-            conexion = new SqlConnection($@"Data Source=DESKTOP-7ESF09C\SQLEXPRESS;Initial Catalog=InsurMaster;Trusted_Connection=True");
+            string connectionString = ConfigurationManager.ConnectionStrings["RestaurantePedidos"].ConnectionString;
+            conexion = new SqlConnection(connectionString);
             conexion.Open();
         }
 
 
-        public void CerrarConexion()
+        protected void CerrarConexion()
         {
             conexion.Close();
             conexion = null;
             GC.Collect();
         }
 
-
-        public void IniciarTransaccion()
+        protected void IniciarTransaccion()
         {
             transaccion = conexion.BeginTransaction();
         }
 
-        public void ConfirmarTransaccion()
+        protected void ConfirmarTransaccion()
         {
             transaccion.Commit();
             transaccion = null;
         }
-        public void DeshacerTransaccion()
+
+        protected void DeshacerTransaccion()
         {
             transaccion.Rollback();
             transaccion = null;
         }
 
-        public DataTable Leer(string sql, List<SqlParameter> parametros = null)
+        protected DataTable Leer(string sql, List<SqlParameter> parametros = null)
         {
             AbrirConexion();
 
@@ -55,7 +57,7 @@ namespace DAL
             return table;
         }
 
-        public int Escribir(string sql, List<SqlParameter> parametros = null)
+        protected int Escribir(string sql, List<SqlParameter> parametros = null)
         {
             int res;
             AbrirConexion();
@@ -68,7 +70,6 @@ namespace DAL
             catch (Exception ex)
             {
                 res = -1;
-
             }
 
             cmd.Parameters.Clear();
@@ -78,27 +79,42 @@ namespace DAL
             return res;
         }
 
-        public SqlParameter CrearParametro(string name, int value)
+        protected SqlParameter CrearParametro(string name, int value)
         {
             SqlParameter parametro = new SqlParameter(name, value);
             parametro.DbType = DbType.Int32;
             return parametro;
         }
 
-        public SqlParameter CrearParametro(string name, float value)
+        protected SqlParameter CrearParametro(string name, float value)
         {
             SqlParameter parametro = new SqlParameter(name, value);
             parametro.DbType = DbType.Single;
             return parametro;
         }
 
-        public SqlParameter CrearParametro(string name, string value)
+        protected SqlParameter CrearParametro(string name, decimal value)
+        {
+            SqlParameter parametro = new SqlParameter(name, value);
+            parametro.DbType = DbType.Decimal;
+            return parametro;
+        }
+
+        protected SqlParameter CrearParametro(string name, DateTime value)
+        {
+            SqlParameter parametro = new SqlParameter(name, value);
+            parametro.DbType = DbType.DateTime;
+            return parametro;
+        }
+
+        protected SqlParameter CrearParametro(string name, string value)
         {
             SqlParameter parametro = new SqlParameter(name, value);
             parametro.DbType = DbType.String;
             return parametro;
         }
-        public SqlCommand CrearComando(string sql, List<SqlParameter> parametros = null)
+
+        protected SqlCommand CrearComando(string sql, List<SqlParameter> parametros = null)
         {
             SqlCommand command = new SqlCommand(sql, conexion);
             command.CommandType = CommandType.Text;
@@ -114,7 +130,7 @@ namespace DAL
             return command;
         }
 
-        public object EscribirEscalar(string sql, List<SqlParameter> parametros = null)
+        protected object EscribirEscalar(string sql, List<SqlParameter> parametros = null)
         {
             object res;
             AbrirConexion();
@@ -135,5 +151,6 @@ namespace DAL
             CerrarConexion();
             return res;
         }
+
     }
 }
