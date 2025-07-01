@@ -1,6 +1,4 @@
-using BE;
-
-namespace BLL
+namespace BE
 {
     public class ComboFactory
     {

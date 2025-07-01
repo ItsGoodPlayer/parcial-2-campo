@@ -51,6 +51,7 @@
     <Compile Include="ComboBasico.cs" />
     <Compile Include="ComboEspecial.cs" />
     <Compile Include="ComboFamiliar.cs" />
+    <Compile Include="ComboFactory.cs" />
     <Compile Include="IPedidoComponent.cs" />
     <Compile Include="PorcionDecorator.cs" />
     <Compile Include="QuesoDecorator.cs" />

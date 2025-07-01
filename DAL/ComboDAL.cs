@@ -17,7 +17,7 @@ namespace DAL
 
             foreach (DataRow row in tabla.Rows)
             {
-                var combo = BLL.ComboFactory.CrearCombo(row["Tipo"].ToString());
+                var combo = ComboFactory.CrearCombo(row["Tipo"].ToString());
                 combo.Id = Convert.ToInt32(row["Id"]);
                 combo.Nombre = row["Nombre"].ToString();
                 combo.Precio = Convert.ToDecimal(row["Precio"]);
@@ -39,7 +39,7 @@ namespace DAL
             if (tabla.Rows.Count > 0)
             {
                 DataRow row = tabla.Rows[0];
-                var combo = BLL.ComboFactory.CrearCombo(row["Tipo"].ToString());
+                var combo = ComboFactory.CrearCombo(row["Tipo"].ToString());
                 combo.Id = Convert.ToInt32(row["Id"]);
                 combo.Nombre = row["Nombre"].ToString();
                 combo.Precio = Convert.ToDecimal(row["Precio"]);
@@ -61,7 +61,7 @@ namespace DAL
             if (tabla.Rows.Count > 0)
             {
                 DataRow row = tabla.Rows[0];
-                var combo = BLL.ComboFactory.CrearCombo(row["Tipo"].ToString());
+                var combo = ComboFactory.CrearCombo(row["Tipo"].ToString());
                 combo.Id = Convert.ToInt32(row["Id"]);
                 combo.Nombre = row["Nombre"].ToString();
                 combo.Precio = Convert.ToDecimal(row["Precio"]);

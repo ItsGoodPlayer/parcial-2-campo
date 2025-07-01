@@ -47,7 +47,6 @@
     <Reference Include="System.Xml"/>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComboFactory.cs" />
     <Compile Include="PedidoBuilder.cs" />
     <Compile Include="SistemaPedidos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

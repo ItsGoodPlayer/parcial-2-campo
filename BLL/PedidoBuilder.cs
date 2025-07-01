@@ -9,7 +9,7 @@ namespace BLL
 
         public PedidoBuilder(TipoCombo tipoCombo)
         {
-            _pedidoComponent = ComboFactory.CrearCombo(tipoCombo);
+            _pedidoComponent = BE.ComboFactory.CrearCombo(tipoCombo);
         }
 
         public PedidoBuilder AgregarQueso()
@@ -80,7 +80,7 @@ namespace BLL
 
         public Pedido ConvertirAPedido()
         {
-            var combo = ComboFactory.CrearCombo(_pedidoComponent.ObtenerTipoComboBase());
+            var combo = BE.ComboFactory.CrearCombo(_pedidoComponent.ObtenerTipoComboBase());
             
             var pedido = new Pedido
             {

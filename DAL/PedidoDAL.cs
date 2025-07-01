@@ -77,7 +77,7 @@ namespace DAL
                     Id = Convert.ToInt32(row["Id"]),
                     Fecha = Convert.ToDateTime(row["FechaPedido"]),
                     Total = Convert.ToDecimal(row["Total"]),
-                    Combo = BLL.ComboFactory.CrearCombo(row["Tipo"].ToString())
+                    Combo = ComboFactory.CrearCombo(row["Tipo"].ToString())
                 };
 
                 pedido.PorcionesAdicionales = CargarPorcionesPedido(pedido.Id);
@@ -159,7 +159,7 @@ namespace DAL
                     Id = Convert.ToInt32(row["Id"]),
                     Fecha = Convert.ToDateTime(row["FechaPedido"]),
                     Total = Convert.ToDecimal(row["Total"]),
-                    Combo = BLL.ComboFactory.CrearCombo(row["Tipo"].ToString())
+                    Combo = ComboFactory.CrearCombo(row["Tipo"].ToString())
                 };
 
                 pedido.PorcionesAdicionales = CargarPorcionesPedido(pedido.Id);
