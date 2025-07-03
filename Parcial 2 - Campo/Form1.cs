@@ -123,7 +123,7 @@ namespace Parcial_2___Campo
         {
             if (cmbCombos.SelectedItem is Combo comboSeleccionado)
             {
-                sistema.CrearNuevoPedido(comboSeleccionado.Tipo);
+                sistema.CrearNuevoPedido(comboSeleccionado);
                 ActualizarEstado();
             }
         }

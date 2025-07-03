@@ -33,9 +33,9 @@ namespace BLL
             return _instancia;
         }
 
-        public void CrearNuevoPedido(TipoCombo tipoCombo)
+        public void CrearNuevoPedido(Combo combo)
         {
-            PedidoActual = new PedidoBuilder(tipoCombo);
+            PedidoActual = new PedidoBuilder(combo);
         }
 
         public void AgregarPorcionAdicional(TipoPorcion tipoPorcion)
@@ -53,7 +53,8 @@ namespace BLL
             
             if (descripcion.Contains(porcionTexto))
             {
-                CrearNuevoPedido(PedidoActual.ObtenerTipoComboBase());
+                var comboActual = ObtenerComboPorTipo(PedidoActual.ObtenerTipoComboBase());
+                CrearNuevoPedido(comboActual);
                 ReconstruirPedidoSinPorcion(descripcion, tipoPorcion);
             }
         }
@@ -132,6 +133,11 @@ namespace BLL
         public List<Combo> ObtenerCombosDisponibles()
         {
             return _comboDAL.CargarCombos();
+        }
+
+        public Combo ObtenerComboPorTipo(TipoCombo tipo)
+        {
+            return _comboDAL.ObtenerComboPorTipo(tipo);
         }
     }
 }

@@ -8,10 +8,12 @@ namespace BLL
     {
         private IPedidoComponent _pedidoComponent;
         private PorcionAdicionalDAL _porcionDAL;
+        private Combo _comboBase;
 
-        public PedidoBuilder(TipoCombo tipoCombo)
+        public PedidoBuilder(Combo combo)
         {
-            _pedidoComponent = (IPedidoComponent)BE.ComboFactory.CrearCombo(tipoCombo);
+            _comboBase = combo;
+            _pedidoComponent = (IPedidoComponent)combo;
             _porcionDAL = new PorcionAdicionalDAL();
         }
 
@@ -83,15 +85,12 @@ namespace BLL
 
         public Pedido ConvertirAPedido()
         {
-            var combo = BE.ComboFactory.CrearCombo(_pedidoComponent.ObtenerTipoComboBase());
-            
             var pedido = new Pedido
             {
-                Combo = combo
+                Combo = _comboBase
             };
 
             var descripcionCompleta = _pedidoComponent.ObtenerDescripcion();
-            var descripcionBase = combo.Nombre;
 
             if (descripcionCompleta.Contains("+ Queso"))
             {
