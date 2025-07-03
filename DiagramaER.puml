@@ -1,0 +1,41 @@
+@startuml
+!define ENTITY entity
+!define WEAK_ENTITY entity
+!define RELATIONSHIP diamond
+
+entity "Combo" as combo {
+  * Id : INT <<PK>>
+  --
+  * Nombre : NVARCHAR(50)
+  * Precio : DECIMAL(10,2)
+  * Descripcion : NVARCHAR(200)
+  * Tipo : NVARCHAR(20)
+}
+
+entity "PorcionAdicional" as porcion {
+  * Id : INT <<PK>>
+  --
+  * Tipo : NVARCHAR(20)
+  * Precio : DECIMAL(10,2)
+}
+
+entity "Pedido" as pedido {
+  * Id : INT <<PK>>
+  --
+  * FechaPedido : DATETIME
+  * ComboId : INT <<FK>>
+  * Total : DECIMAL(10,2)
+}
+
+entity "PedidoPorcion" as pedido_porcion {
+  * PedidoId : INT <<FK>>
+  * PorcionId : INT <<FK>>
+  --
+  * Cantidad : INT
+}
+
+combo ||--o{ pedido : "tiene"
+pedido ||--o{ pedido_porcion : "incluye"
+porcion ||--o{ pedido_porcion : "se agrega en"
+
+@enduml

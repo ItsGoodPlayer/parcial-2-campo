@@ -1,4 +1,4 @@
-@startuml DiagramaClasesGeneral_SistemaPedidosRestaurante
+@startuml DiagramaClasesReorganizado_SistemaPedidosRestaurante
 
 !theme plain
 skinparam classAttributeIconSize 0
@@ -6,9 +6,9 @@ skinparam classFontSize 9
 skinparam classAttributeFontSize 8
 skinparam linetype ortho
 
-title Diagrama de Clases General - Sistema de Pedidos del Restaurante\nArquitectura en Capas con Patrones de Diseño (Factory, Singleton, Decorator, Builder, DAO)
+title Diagrama de Clases - Sistema de Pedidos del Restaurante\nArquitectura en Capas con Patrones de Diseño
 
-' Elementos más primitivos - Enumeraciones
+' === ENUMERACIONES E INTERFACES (PARTE SUPERIOR) ===
 enum TipoCombo {
     Basico
     Familiar
@@ -22,7 +22,6 @@ enum TipoPorcion {
     Queso
 }
 
-' Interfaces fundamentales
 interface IPedidoComponent {
     +CalcularPrecio(): decimal
     +ObtenerDescripcion(): string
@@ -30,10 +29,9 @@ interface IPedidoComponent {
     +ObtenerTipoComboBase(): TipoCombo
 }
 
-package "Capa BE (Business Entities)" <<Rectangle>> {
-    
-    ' Clase abstracta base para combos
-    abstract class Combo {
+' === GRUPO COMBOS ===
+package "Entidades Combo" <<Rectangle>> {
+    abstract class ComboBE {
         +Id: int
         +Nombre: string
         +Precio: decimal
@@ -45,36 +43,36 @@ package "Capa BE (Business Entities)" <<Rectangle>> {
         +ToString(): string
     }
     
-    ' Combos específicos
-    class ComboBasico {
+    class ComboBasicoBE {
         +ComboBasico()
         +ObtenerDescripcion(): string
         +ObtenerIngredientes(): List<string>
         +ObtenerTipoComboBase(): TipoCombo
     }
     
-    class ComboFamiliar {
+    class ComboFamiliarBE {
         +ComboFamiliar()
         +ObtenerDescripcion(): string
         +ObtenerIngredientes(): List<string>
         +ObtenerTipoComboBase(): TipoCombo
     }
     
-    class ComboEspecial {
+    class ComboEspecialBE {
         +ComboEspecial()
         +ObtenerDescripcion(): string
         +ObtenerIngredientes(): List<string>
         +ObtenerTipoComboBase(): TipoCombo
     }
     
-    ' Factory Pattern para combos
-    class ComboFactory {
-        +{static} CrearCombo(tipo: TipoCombo): Combo
-        +{static} CrearCombo(tipoString: string): Combo
+    class ComboFactoryBE {
+        +{static} CrearCombo(tipo: TipoCombo): ComboBE
+        +{static} CrearCombo(tipoString: string): ComboBE
     }
-    
-    ' Decorator Pattern - Clase base abstracta
-    abstract class PorcionDecorator {
+}
+
+' === GRUPO DECORATORS ===
+package "Decorators de Porciones" <<Rectangle>> {
+    abstract class PorcionDecoratorBE {
         #componente: IPedidoComponent
         --
         #PorcionDecorator(componente: IPedidoComponent)
@@ -84,45 +82,99 @@ package "Capa BE (Business Entities)" <<Rectangle>> {
         +ObtenerTipoComboBase(): TipoCombo
     }
     
-    ' Decorators específicos
-    class QuesoDecorator {
-        -PRECIO_QUESO: decimal = 800
-        --
+    class QuesoDecoratorBE {
         +QuesoDecorator(componente: IPedidoComponent)
         +CalcularPrecio(): decimal
         +ObtenerDescripcion(): string
         +ObtenerIngredientes(): List<string>
     }
     
-    class CarneDecorator {
-        -PRECIO_CARNE: decimal = 2000
-        --
+    class CarneDecoratorBE {
         +CarneDecorator(componente: IPedidoComponent)
         +CalcularPrecio(): decimal
         +ObtenerDescripcion(): string
         +ObtenerIngredientes(): List<string>
     }
     
-    class TomateDecorator {
-        -PRECIO_TOMATE: decimal = 500
-        --
+    class TomateDecoratorBE {
         +TomateDecorator(componente: IPedidoComponent)
         +CalcularPrecio(): decimal
         +ObtenerDescripcion(): string
         +ObtenerIngredientes(): List<string>
     }
     
-    class PapasDecorator {
-        -PRECIO_PAPAS: decimal = 1000
-        --
+    class PapasDecoratorBE {
         +PapasDecorator(componente: IPedidoComponent)
         +CalcularPrecio(): decimal
         +ObtenerDescripcion(): string
         +ObtenerIngredientes(): List<string>
     }
+}
+
+' === GRUPO LÓGICA DE NEGOCIO ===
+package "Lógica de Negocio" <<Rectangle>> {
+    class PedidoBuilderBLL {
+        -_pedidoComponent: IPedidoComponent
+        -_porcionDAL: PorcionAdicionalDAL
+        -_comboBase: ComboBE
+        --
+        +PedidoBuilderBLL(combo: ComboBE)
+        +AgregarQueso(): PedidoBuilderBLL
+        +AgregarCarne(): PedidoBuilderBLL
+        +AgregarTomate(): PedidoBuilderBLL
+        +AgregarPapas(): PedidoBuilderBLL
+        +AgregarPorcion(tipoPorcion: TipoPorcion): PedidoBuilderBLL
+        +Construir(): IPedidoComponent
+        +ObtenerPrecioTotal(): decimal
+        +ObtenerDescripcionCompleta(): string
+        +ObtenerIngredientes(): List<string>
+        +ObtenerTipoComboBase(): TipoCombo
+        +ConvertirAPedido(): PedidoBE
+    }
     
-    ' Clases para persistencia
-    class PorcionAdicional {
+    class SistemaPedidosBLL {
+        -{static} _instancia: SistemaPedidosBLL
+        -_pedidoDAL: PedidoDAL
+        -_porcionDAL: PorcionAdicionalDAL
+        -_comboDAL: ComboDAL
+        +PedidoActual: PedidoBuilderBLL
+        +HistorialPedidos: List<PedidoBE>
+        --
+        -SistemaPedidosBLL()
+        +{static} ObtenerInstancia(): SistemaPedidosBLL
+        +CrearNuevoPedido(combo: ComboBE): void
+        +AgregarPorcionAdicional(tipoPorcion: TipoPorcion): void
+        +QuitarPorcionAdicional(tipoPorcion: TipoPorcion): void
+        +FinalizarPedido(): void
+        +CargarHistorial(): void
+        +ObtenerPorcionesDisponibles(): List<PorcionAdicional>
+        +EliminarPedido(pedidoId: int): bool
+        +ObtenerPedidoPorId(pedidoId: int): PedidoBE
+        +ObtenerTotalPedidoActual(): decimal
+        +ObtenerResumenPedidoActual(): string
+        +TienePorcion(tipoPorcion: TipoPorcion): bool
+        +ObtenerCombosDisponibles(): List<ComboBE>
+        +ObtenerComboPorTipo(tipo: TipoCombo): ComboBE
+        -ReconstruirPedidoSinPorcion(descripcionOriginal: string, porcionAEliminar: TipoPorcion): void
+    }
+}
+
+' === GRUPO ENTIDADES DE DATOS ===
+package "Entidades de Datos" <<Rectangle>> {
+    class PedidoBE {
+        +Id: int
+        +Combo: ComboBE
+        +PorcionesAdicionales: List<PorcionAdicionalBE>
+        +Fecha: DateTime
+        +Total: decimal
+        --
+        +Pedido()
+        +CalcularTotal(): decimal
+        +ObtenerResumen(): string
+        +ToString(): string
+    }
+    
+    class PorcionAdicionalBE {
         +Id: int
         +Tipo: TipoPorcion
         +Precio: decimal
@@ -133,69 +185,10 @@ package "Capa BE (Business Entities)" <<Rectangle>> {
         +CalcularSubtotal(): decimal
         +ToString(): string
     }
-    
-    class Pedido {
-        +Id: int
-        +Combo: Combo
-        +PorcionesAdicionales: List<PorcionAdicional>
-        +Fecha: DateTime
-        +Total: decimal
-        --
-        +Pedido()
-        +CalcularTotal(): decimal
-        +ObtenerResumen(): string
-        +ToString(): string
-    }
 }
 
-package "Capa BLL (Business Logic Layer)" <<Rectangle>> {
-    
-    ' Builder Pattern para construir pedidos
-    class PedidoBuilder {
-        -_pedidoComponent: IPedidoComponent
-        --
-        +PedidoBuilder(tipoCombo: TipoCombo)
-        +AgregarQueso(): PedidoBuilder
-        +AgregarCarne(): PedidoBuilder
-        +AgregarTomate(): PedidoBuilder
-        +AgregarPapas(): PedidoBuilder
-        +AgregarPorcion(tipoPorcion: TipoPorcion): PedidoBuilder
-        +Construir(): IPedidoComponent
-        +ObtenerPrecioTotal(): decimal
-        +ObtenerDescripcionCompleta(): string
-        +ObtenerIngredientes(): List<string>
-        +ObtenerTipoComboBase(): TipoCombo
-        +ConvertirAPedido(): Pedido
-    }
-    
-    ' Singleton Pattern para gestión de pedidos
-    class SistemaPedidos {
-        -{static} _instancia: SistemaPedidos
-        -_pedidoDAL: PedidoDAL
-        -_porcionDAL: PorcionAdicionalDAL
-        +PedidoActual: PedidoBuilder
-        +HistorialPedidos: List<Pedido>
-        --
-        -SistemaPedidos()
-        +{static} ObtenerInstancia(): SistemaPedidos
-        +CrearNuevoPedido(tipoCombo: TipoCombo): void
-        +AgregarPorcionAdicional(tipoPorcion: TipoPorcion): void
-        +QuitarPorcionAdicional(tipoPorcion: TipoPorcion): void
-        +FinalizarPedido(): void
-        +CargarHistorial(): void
-        +ObtenerPorcionesDisponibles(): List<PorcionAdicional>
-        +EliminarPedido(pedidoId: int): bool
-        +ObtenerPedidoPorId(pedidoId: int): Pedido
-        +ObtenerTotalPedidoActual(): decimal
-        +ObtenerResumenPedidoActual(): string
-        +TienePorcion(tipoPorcion: TipoPorcion): bool
-        -ReconstruirPedidoSinPorcion(descripcionOriginal: string, porcionAEliminar: TipoPorcion): void
-    }
-}
-
-package "Capa DAL (Data Access Layer)" <<Rectangle>> {
-    
-    ' Clase base abstracta para DAL
+' === GRUPO ACCESO A DATOS ===
+package "Capa de Acceso a Datos" <<Rectangle>> {
     abstract class AccesoDAL {
         #conexion: SqlConnection
         #transaccion: SqlTransaction
@@ -208,6 +201,7 @@ package "Capa DAL (Data Access Layer)" <<Rectangle>> {
         #Leer(sql: string, parametros: List<SqlParameter>): DataTable
         #Escribir(sql: string, parametros: List<SqlParameter>): int
         #EscribirEscalar(sql: string, parametros: List<SqlParameter>): object
+        #LeerEscalar(sql: string, parametros: List<SqlParameter>): object
         #CrearParametro(name: string, value: int): SqlParameter
         #CrearParametro(name: string, value: decimal): SqlParameter
         #CrearParametro(name: string, value: DateTime): SqlParameter
@@ -215,116 +209,79 @@ package "Capa DAL (Data Access Layer)" <<Rectangle>> {
         #CrearComando(sql: string, parametros: List<SqlParameter>): SqlCommand
     }
     
-    ' DAO específico para pedidos
     class PedidoDAL {
         -porcionDAL: PorcionAdicionalDAL
         --
         +PedidoDAL()
-        +GuardarPedido(pedido: Pedido): int
-        +CargarPedidos(): List<Pedido>
+        +GuardarPedido(pedido: PedidoBE): int
+        +CargarPedidos(): List<PedidoBE>
         +EliminarPedido(pedidoId: int): bool
-        +ObtenerPedidoPorId(pedidoId: int): Pedido
-        -CargarPorcionesPedido(pedidoId: int): List<PorcionAdicional>
+        +ObtenerPedidoPorId(pedidoId: int): PedidoBE
+        -CargarPorcionesPedido(pedidoId: int): List<PorcionAdicionalBE>
     }
     
-    ' DAO específico para combos
     class ComboDAL {
-        +CargarCombos(): List<Combo>
-        +ObtenerComboPorId(comboId: int): Combo
-        +ObtenerComboPorTipo(tipo: TipoCombo): Combo
+        +CargarCombos(): List<ComboBE>
+        +ObtenerComboPorId(comboId: int): ComboBE
+        +ObtenerComboPorTipo(tipo: TipoCombo): ComboBE
         +ActualizarPrecioCombo(comboId: int, nuevoPrecio: decimal): bool
-        +ActualizarCombo(combo: Combo): bool
+        +ActualizarCombo(combo: ComboBE): bool
     }
     
-    ' DAO específico para porciones adicionales
     class PorcionAdicionalDAL {
-        +CargarPorcionesAdicionales(): List<PorcionAdicional>
-        +ObtenerPorcionPorId(porcionId: int): PorcionAdicional
-        +ObtenerPorcionPorTipo(tipo: TipoPorcion): PorcionAdicional
+        +CargarPorcionesAdicionales(): List<PorcionAdicionalBE>
+        +ObtenerPorcionPorId(porcionId: int): PorcionAdicionalBE
         +ObtenerIdPorcion(tipo: TipoPorcion): int
         +ObtenerPrecioPorcion(tipo: TipoPorcion): decimal
-        +ActualizarPrecioPorcion(tipo: TipoPorcion, nuevoPrecio: decimal): bool
-        +ExistePorcion(tipo: TipoPorcion): bool
-        +ObtenerPorcionesPorPedido(pedidoId: int): List<PorcionAdicional>
     }
 }
 
-' Relaciones de implementación/herencia - De primitivo a complejo
-Combo --|> IPedidoComponent
-ComboBasico --|> Combo
-ComboFamiliar --|> Combo
-ComboEspecial --|> Combo
+' === RELACIONES DE HERENCIA E IMPLEMENTACIÓN ===
+IPedidoComponent <|-- ComboBE
+ComboBE <|-- ComboBasicoBE
+ComboBE <|-- ComboFamiliarBE
+ComboBE <|-- ComboEspecialBE
 
-PorcionDecorator --|> IPedidoComponent
-QuesoDecorator --|> PorcionDecorator
-CarneDecorator --|> PorcionDecorator
-TomateDecorator --|> PorcionDecorator
-PapasDecorator --|> PorcionDecorator
+IPedidoComponent <|-- PorcionDecoratorBE
+PorcionDecoratorBE <|-- QuesoDecoratorBE
+PorcionDecoratorBE <|-- CarneDecoratorBE
+PorcionDecoratorBE <|-- TomateDecoratorBE
+PorcionDecoratorBE <|-- PapasDecoratorBE
 
-PedidoDAL --|> AccesoDAL
-ComboDAL --|> AccesoDAL
-PorcionAdicionalDAL --|> AccesoDAL
+AccesoDAL <|-- PedidoDAL
+AccesoDAL <|-- ComboDAL
+AccesoDAL <|-- PorcionAdicionalDAL
 
-' Relaciones de composición y agregación
-Pedido "1" *-- "0..*" PorcionAdicional
-Pedido "1" *-- "1" Combo
-SistemaPedidos "1" o-- "0..1" PedidoBuilder
-SistemaPedidos "1" *-- "0..*" Pedido
+' === RELACIONES DE COMPOSICIÓN Y AGREGACIÓN ===
+PedidoBE *-- PorcionAdicionalBE
+PedidoBE *-- ComboBE
+SistemaPedidosBLL o-- PedidoBuilderBLL
+SistemaPedidosBLL *-- PedidoBE
+PorcionDecoratorBE o-- IPedidoComponent
 
-' Relaciones de uso/dependencia - De complejo a primitivo
-ComboFactory ..> Combo
-ComboFactory ..> ComboBasico
-ComboFactory ..> ComboFamiliar
-ComboFactory ..> ComboEspecial
+' === RELACIONES DE USO/DEPENDENCIA ===
+ComboFactoryBE ..> ComboBasicoBE
+ComboFactoryBE ..> ComboFamiliarBE
+ComboFactoryBE ..> ComboEspecialBE
 
-PedidoBuilder ..> IPedidoComponent
-PedidoBuilder ..> ComboFactory
-PedidoBuilder ..> QuesoDecorator
-PedidoBuilder ..> CarneDecorator
-PedidoBuilder ..> TomateDecorator
-PedidoBuilder ..> PapasDecorator
+PedidoBuilderBLL ..> QuesoDecoratorBE
+PedidoBuilderBLL ..> CarneDecoratorBE
+PedidoBuilderBLL ..> TomateDecoratorBE
+PedidoBuilderBLL ..> PapasDecoratorBE
+PedidoBuilderBLL ..> PorcionAdicionalDAL
 
-SistemaPedidos ..> PedidoBuilder
-SistemaPedidos ..> PedidoDAL
-SistemaPedidos ..> PorcionAdicionalDAL
+SistemaPedidosBLL ..> PedidoDAL
+SistemaPedidosBLL ..> PorcionAdicionalDAL
+SistemaPedidosBLL ..> ComboDAL
 
-PedidoDAL ..> Pedido
-PedidoDAL ..> ComboFactory
+PedidoDAL ..> ComboFactoryBE
 PedidoDAL ..> PorcionAdicionalDAL
 
-ComboDAL ..> Combo
-ComboDAL ..> ComboFactory
+ComboDAL ..> ComboFactoryBE
+PorcionAdicionalDAL ..> PorcionAdicionalBE
 
-PorcionAdicionalDAL ..> PorcionAdicional
-
-' Relaciones de decoración
-PorcionDecorator "1" o-- "1" IPedidoComponent : decora
-
-' Enumeraciones relacionadas
-TipoCombo -- Combo
-TipoPorcion -- PorcionAdicional
-
-note top of "Capa BE (Business Entities)" : "Entidades del dominio\nPatrón Decorator implementado\nFactory Pattern para creación\nInterfaces y abstracciones"
-
-note top of "Capa BLL (Business Logic Layer)" : "Lógica de negocio\nPatrón Singleton\nPatrón Builder (Fluent API)\nOrquestación de operaciones"
-
-note top of "Capa DAL (Data Access Layer)" : "Acceso a datos\nPatrón DAO especializado\nHerencia de clase base\nPersistencia en SQL Server"
-
-note as N1
-**Patrones Implementados:**
-• Factory Pattern (ComboFactory)
-• Singleton Pattern (SistemaPedidos)
-• Decorator Pattern (PorcionDecorator)
-• Builder Pattern (PedidoBuilder)
-• DAO Pattern (AccesoDAL + específicos)
-• Template Method (Combo abstracto)
-end note
-
-note as N2
-**Flujo de Arquitectura:**
-BLL → DAL → BE
-Sin referencias circulares
-Separación clara de responsabilidades
-end note
+' === RELACIONES CON ENUMERACIONES ===
+TipoCombo -- ComboBE
+TipoPorcion -- PorcionAdicionalBE
 
 @enduml
