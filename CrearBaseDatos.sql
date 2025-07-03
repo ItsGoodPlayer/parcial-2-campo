@@ -1,10 +1,10 @@
 -- Script para crear base de datos del sistema de pedidos del restaurante
 -- Ejecutar en SQL Server Management Studio
 
-CREATE DATABASE RestaurantePedidos;
+CREATE DATABASE McDonalds;
 GO
 
-USE RestaurantePedidos;
+USE McDonalds;
 GO
 
 -- Tabla de Combos
