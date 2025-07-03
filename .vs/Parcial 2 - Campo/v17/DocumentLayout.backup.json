@@ -3,40 +3,68 @@
   "WorkspaceRootPath": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{83FDCEED-72DF-4605-9E24-F616902DF084}|Parcial 2 - Campo\\GUI.csproj|c:\\users\\nachi\\source\\repos\\parcial 2 - campo\\parcial 2 - campo\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{83FDCEED-72DF-4605-9E24-F616902DF084}|Parcial 2 - Campo\\GUI.csproj|solutionrelative:parcial 2 - campo\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{E89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2D}|DAL\\DAL.csproj|C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\dal\\combodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2D}|DAL\\DAL.csproj|solutionrelative:dal\\combodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{83FDCEED-72DF-4605-9E24-F616902DF084}|Parcial 2 - Campo\\Parcial 2 - Campo.csproj|C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\parcial 2 - campo\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{83FDCEED-72DF-4605-9E24-F616902DF084}|Parcial 2 - Campo\\Parcial 2 - Campo.csproj|solutionrelative:parcial 2 - campo\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{E89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2D}|DAL\\DAL.csproj|C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\dal\\pedidodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2D}|DAL\\DAL.csproj|solutionrelative:dal\\pedidodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2D}|DAL\\DAL.csproj|c:\\users\\nachi\\source\\repos\\parcial 2 - campo\\dal\\porcionadicionaldal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2D}|DAL\\DAL.csproj|solutionrelative:dal\\porcionadicionaldal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2C}|BLL\\BLL.csproj|C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\bll\\pedidobuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2C}|BLL\\BLL.csproj|solutionrelative:bll\\pedidobuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\be\\combofactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|solutionrelative:be\\combofactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2C}|BLL\\BLL.csproj|c:\\users\\nachi\\source\\repos\\parcial 2 - campo\\bll\\sistemapedidos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2C}|BLL\\BLL.csproj|solutionrelative:bll\\sistemapedidos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2D}|DAL\\DAL.csproj|C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\dal\\accesodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2D}|DAL\\DAL.csproj|solutionrelative:dal\\accesodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2D}|DAL\\DAL.csproj|c:\\users\\nachi\\source\\repos\\parcial 2 - campo\\dal\\combodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2D}|DAL\\DAL.csproj|solutionrelative:dal\\combodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|c:\\users\\nachi\\source\\repos\\parcial 2 - campo\\be\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|solutionrelative:be\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2D}|DAL\\DAL.csproj|c:\\users\\nachi\\source\\repos\\parcial 2 - campo\\dal\\pedidodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2D}|DAL\\DAL.csproj|solutionrelative:dal\\pedidodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\be\\papasdecorator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|solutionrelative:be\\papasdecorator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2C}|BLL\\BLL.csproj|c:\\users\\nachi\\source\\repos\\parcial 2 - campo\\bll\\pedidobuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2C}|BLL\\BLL.csproj|solutionrelative:bll\\pedidobuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|c:\\users\\nachi\\source\\repos\\parcial 2 - campo\\be\\quesodecorator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|solutionrelative:be\\quesodecorator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\be\\combofamiliar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|solutionrelative:be\\combofamiliar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\be\\porciondecorator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|solutionrelative:be\\porciondecorator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\be\\porcionadicional.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|solutionrelative:be\\porcionadicional.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\be\\ipedidocomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|solutionrelative:be\\ipedidocomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\be\\papasdecorator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|solutionrelative:be\\papasdecorator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\be\\combofamiliar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C89C1372-7A3E-4F4B-9F4E-3E5B8C9D1A2B}|BE\\BE.csproj|solutionrelative:be\\combofamiliar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83FDCEED-72DF-4605-9E24-F616902DF084}|Parcial 2 - Campo\\GUI.csproj|C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\parcial 2 - campo\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{83FDCEED-72DF-4605-9E24-F616902DF084}|Parcial 2 - Campo\\GUI.csproj|solutionrelative:parcial 2 - campo\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83FDCEED-72DF-4605-9E24-F616902DF084}|Parcial 2 - Campo\\Parcial 2 - Campo.csproj|C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\parcial 2 - campo\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{83FDCEED-72DF-4605-9E24-F616902DF084}|Parcial 2 - Campo\\Parcial 2 - Campo.csproj|solutionrelative:parcial 2 - campo\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F237DBA6-E5F0-4829-B07F-0F6868195D9F}|BE\\BE.csproj|C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\be\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,61 +86,111 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\Parcial 2 - Campo\\Form1.cs",
-              "RelativeDocumentMoniker": "Parcial 2 - Campo\\Form1.cs",
-              "ToolTip": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\Parcial 2 - Campo\\Form1.cs [Design]*",
-              "RelativeToolTip": "Parcial 2 - Campo\\Form1.cs [Design]*",
+              "DocumentIndex": 2,
+              "Title": "PorcionAdicionalDAL.cs",
+              "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\DAL\\PorcionAdicionalDAL.cs",
+              "RelativeDocumentMoniker": "DAL\\PorcionAdicionalDAL.cs",
+              "ToolTip": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\DAL\\PorcionAdicionalDAL.cs",
+              "RelativeToolTip": "DAL\\PorcionAdicionalDAL.cs",
+              "ViewState": "AgIAAAAAAAAAzczMzMwXwAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T13:49:11.011Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-07-03T16:56:30.789Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
+              "Title": "Pedido.cs",
+              "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\Pedido.cs",
+              "RelativeDocumentMoniker": "BE\\Pedido.cs",
+              "ToolTip": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\Pedido.cs",
+              "RelativeToolTip": "BE\\Pedido.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T02:54:48.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PorcionAdicional.cs",
+              "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\PorcionAdicional.cs",
+              "RelativeDocumentMoniker": "BE\\PorcionAdicional.cs",
+              "ToolTip": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\PorcionAdicional.cs",
+              "RelativeToolTip": "BE\\PorcionAdicional.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T13:53:04.411Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ComboFactory.cs",
+              "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\ComboFactory.cs",
+              "RelativeDocumentMoniker": "BE\\ComboFactory.cs",
+              "ToolTip": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\ComboFactory.cs",
+              "RelativeToolTip": "BE\\ComboFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T13:52:13.683Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\Parcial 2 - Campo\\Form1.cs",
+              "RelativeDocumentMoniker": "Parcial 2 - Campo\\Form1.cs",
+              "ToolTip": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\Parcial 2 - Campo\\Form1.cs [Design]",
+              "RelativeToolTip": "Parcial 2 - Campo\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T13:49:11.011Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "PedidoBuilder.cs",
               "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BLL\\PedidoBuilder.cs",
               "RelativeDocumentMoniker": "BLL\\PedidoBuilder.cs",
               "ToolTip": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BLL\\PedidoBuilder.cs",
               "RelativeToolTip": "BLL\\PedidoBuilder.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAZmZmZqYkwA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-01T13:40:02.385Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "ComboDAL.cs",
               "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\DAL\\ComboDAL.cs",
               "RelativeDocumentMoniker": "DAL\\ComboDAL.cs",
               "ToolTip": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\DAL\\ComboDAL.cs",
               "RelativeToolTip": "DAL\\ComboDAL.cs",
-              "ViewState": "AgIAABIAAACAmZmZmZkcwCUAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAMzMzM3MvwAoAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-01T13:26:40.686Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 13,
               "Title": "ComboFamiliar.cs",
               "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\ComboFamiliar.cs",
               "RelativeDocumentMoniker": "BE\\ComboFamiliar.cs",
               "ToolTip": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\ComboFamiliar.cs",
               "RelativeToolTip": "BE\\ComboFamiliar.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAACAzMzMzMwVwA0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-01T13:26:07.891Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "IPedidoComponent.cs",
               "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\IPedidoComponent.cs",
               "RelativeDocumentMoniker": "BE\\IPedidoComponent.cs",
@@ -124,32 +202,84 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PapasDecorator.cs",
-              "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\PapasDecorator.cs",
-              "RelativeDocumentMoniker": "BE\\PapasDecorator.cs",
-              "ToolTip": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\PapasDecorator.cs",
-              "RelativeToolTip": "BE\\PapasDecorator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "PedidoDAL.cs",
+              "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\DAL\\PedidoDAL.cs",
+              "RelativeDocumentMoniker": "DAL\\PedidoDAL.cs",
+              "ToolTip": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\DAL\\PedidoDAL.cs",
+              "RelativeToolTip": "DAL\\PedidoDAL.cs",
+              "ViewState": "AgIAAAQAAAAAZmZmZuYcwC4AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T13:25:54.49Z"
+              "WhenOpened": "2025-07-01T13:46:18.973Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "SistemaPedidos.cs",
+              "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BLL\\SistemaPedidos.cs",
+              "RelativeDocumentMoniker": "BLL\\SistemaPedidos.cs",
+              "ToolTip": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BLL\\SistemaPedidos.cs",
+              "RelativeToolTip": "BLL\\SistemaPedidos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T02:55:24.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "AccesoDAL.cs",
               "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\DAL\\AccesoDAL.cs",
               "RelativeDocumentMoniker": "DAL\\AccesoDAL.cs",
               "ToolTip": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\DAL\\AccesoDAL.cs",
               "RelativeToolTip": "DAL\\AccesoDAL.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAA6wCsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAiwCsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-01T12:14:33.446Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PorcionDecorator.cs",
+              "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\PorcionDecorator.cs",
+              "RelativeDocumentMoniker": "BE\\PorcionDecorator.cs",
+              "ToolTip": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\PorcionDecorator.cs",
+              "RelativeToolTip": "BE\\PorcionDecorator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T13:53:06.402Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "QuesoDecorator.cs",
+              "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\QuesoDecorator.cs",
+              "RelativeDocumentMoniker": "BE\\QuesoDecorator.cs",
+              "ToolTip": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\QuesoDecorator.cs",
+              "RelativeToolTip": "BE\\QuesoDecorator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T13:53:08.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PapasDecorator.cs",
+              "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\PapasDecorator.cs",
+              "RelativeDocumentMoniker": "BE\\PapasDecorator.cs",
+              "ToolTip": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\PapasDecorator.cs",
+              "RelativeToolTip": "BE\\PapasDecorator.cs",
+              "ViewState": "AgIAAAMAAADw/////38ZwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T13:25:54.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BE\\Class1.cs",
               "RelativeDocumentMoniker": "BE\\Class1.cs",
@@ -161,7 +291,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 17,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\DAL\\Class1.cs",
               "RelativeDocumentMoniker": "DAL\\Class1.cs",
@@ -173,7 +303,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 18,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\BLL\\Class1.cs",
               "RelativeDocumentMoniker": "BLL\\Class1.cs",
@@ -185,7 +315,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 15,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\Parcial 2 - Campo\\Form1.cs",
               "RelativeDocumentMoniker": "Parcial 2 - Campo\\Form1.cs",
@@ -193,19 +323,6 @@
               "RelativeToolTip": "Parcial 2 - Campo\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-01T11:50:01.976Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PedidoDAL.cs",
-              "DocumentMoniker": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\DAL\\PedidoDAL.cs",
-              "RelativeDocumentMoniker": "DAL\\PedidoDAL.cs",
-              "ToolTip": "C:\\Users\\nachi\\source\\repos\\Parcial 2 - Campo\\DAL\\PedidoDAL.cs",
-              "RelativeToolTip": "DAL\\PedidoDAL.cs",
-              "ViewState": "AgIAACIAAAAAl5mZmZkIwC4AAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T13:46:18.973Z",
-              "EditorCaption": ""
             }
           ]
         }
