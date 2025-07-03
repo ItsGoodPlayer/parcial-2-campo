@@ -65,29 +65,32 @@ namespace Parcial_2___Campo
 
         private void ActualizarEstado()
         {
-            bool hayPedidoActual = sistema.PedidoActual != null;
+            bool hayPedidoSeleccionado = sistema.PedidoSeleccionado != null;
+            bool hayPedidosActivos = sistema.ObtenerCantidadPedidosActivos() > 0;
             
-            cmbCombos.Enabled = !hayPedidoActual;
-            btnNuevoPedido.Enabled = !hayPedidoActual && cmbCombos.SelectedItem != null;
-            chkPorciones.Enabled = hayPedidoActual;
-            btnFinalizarPedido.Enabled = hayPedidoActual;
+            cmbCombos.Enabled = true;
+            btnNuevoPedido.Enabled = cmbCombos.SelectedItem != null;
+            chkPorciones.Enabled = hayPedidoSeleccionado;
+            btnFinalizarPedido.Enabled = hayPedidoSeleccionado;
 
-            if (hayPedidoActual)
+            if (hayPedidoSeleccionado)
             {
                 ActualizarResumenPedido();
                 ActualizarCheckboxesPorciones();
             }
             else
             {
-                txtResumen.Text = "No hay pedido actual. Seleccione un combo y presione 'Nuevo Pedido'.";
+                txtResumen.Text = hayPedidosActivos ? "Seleccione un pedido de la lista para editarlo." : "No hay pedidos activos. Seleccione un combo y presione 'Nuevo Pedido'.";
                 lblTotal.Text = "Total: $0";
                 LimpiarCheckboxes();
             }
+            
+            ActualizarListaPedidosActivos();
         }
 
         private void ActualizarResumenPedido()
         {
-            if (sistema.PedidoActual != null)
+            if (sistema.PedidoSeleccionado != null)
             {
                 txtResumen.Text = sistema.ObtenerResumenPedidoActual();
                 lblTotal.Text = $"Total: ${sistema.ObtenerTotalPedidoActual():N0}";
@@ -96,7 +99,7 @@ namespace Parcial_2___Campo
 
         private void ActualizarCheckboxesPorciones()
         {
-            if (sistema.PedidoActual == null) return;
+            if (sistema.PedidoSeleccionado == null) return;
 
             for (int i = 0; i < chkPorciones.Items.Count; i++)
             {
@@ -130,7 +133,7 @@ namespace Parcial_2___Campo
 
         private void chkPorciones_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            if (sistema.PedidoActual == null) return;
+            if (sistema.PedidoSeleccionado == null) return;
 
             var porcion = porcionesDisponibles[e.Index];
             
@@ -145,12 +148,13 @@ namespace Parcial_2___Campo
                     sistema.QuitarPorcionAdicional(porcion.Tipo);
                 }
                 ActualizarResumenPedido();
+                ActualizarListaPedidosActivos();
             }));
         }
 
         private void btnFinalizarPedido_Click(object sender, EventArgs e)
         {
-            if (sistema.PedidoActual != null)
+            if (sistema.PedidoSeleccionado != null)
             {
                 sistema.FinalizarPedido();
                 CargarHistorial();
@@ -172,6 +176,68 @@ namespace Parcial_2___Campo
             {
                 txtResumenHistorial.Text = pedidoSeleccionado.ObtenerResumen();
             }
+        }
+
+        private void ActualizarListaPedidosActivos()
+        {
+            lstPedidosActivos.Items.Clear();
+            
+            for (int i = 0; i < sistema.ObtenerCantidadPedidosActivos(); i++)
+            {
+                var resumen = sistema.ObtenerResumenPedido(i);
+                lstPedidosActivos.Items.Add($"#{i + 1}: {resumen}");
+            }
+            
+            lblTotalGeneral.Text = $"Total Gral.: ${sistema.ObtenerTotalTodosPedidos():N0}";
+            
+            bool hayPedidos = sistema.ObtenerCantidadPedidosActivos() > 0;
+            btnFinalizarTodos.Enabled = hayPedidos;
+            btnEliminarPedido.Enabled = hayPedidos && lstPedidosActivos.SelectedIndex >= 0;
+        }
+
+        private void btnFinalizarTodos_Click(object sender, EventArgs e)
+        {
+            if (sistema.ObtenerCantidadPedidosActivos() > 0)
+            {
+                var totalTodos = sistema.ObtenerTotalTodosPedidos();
+                var resultado = MessageBox.Show($"¿Confirma finalizar todos los pedidos?\nTotal: ${totalTodos:N0}", 
+                    "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                
+                if (resultado == DialogResult.Yes)
+                {
+                    sistema.FinalizarTodosPedidos();
+                    CargarHistorial();
+                    LimpiarSelecciones();
+                    ActualizarEstado();
+                    MessageBox.Show("Todos los pedidos finalizados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void btnEliminarPedido_Click(object sender, EventArgs e)
+        {
+            if (lstPedidosActivos.SelectedIndex >= 0)
+            {
+                var resultado = MessageBox.Show("¿Está seguro de eliminar este pedido?", 
+                    "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                
+                if (resultado == DialogResult.Yes)
+                {
+                    sistema.EliminarPedidoActivo(lstPedidosActivos.SelectedIndex);
+                    ActualizarEstado();
+                }
+            }
+        }
+
+        private void lstPedidosActivos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstPedidosActivos.SelectedIndex >= 0)
+            {
+                sistema.SeleccionarPedido(lstPedidosActivos.SelectedIndex);
+                ActualizarEstado();
+            }
+            
+            btnEliminarPedido.Enabled = lstPedidosActivos.SelectedIndex >= 0;
         }
     }
 }

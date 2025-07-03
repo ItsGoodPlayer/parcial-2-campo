@@ -41,6 +41,11 @@
             this.lstHistorial = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtResumenHistorial = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lstPedidosActivos = new System.Windows.Forms.ListBox();
+            this.btnEliminarPedido = new System.Windows.Forms.Button();
+            this.btnFinalizarTodos = new System.Windows.Forms.Button();
+            this.lblTotalGeneral = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -176,11 +181,70 @@
             this.txtResumenHistorial.Size = new System.Drawing.Size(300, 135);
             this.txtResumenHistorial.TabIndex = 12;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(690, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(126, 17);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Pedidos Activos";
+            // 
+            // lstPedidosActivos
+            // 
+            this.lstPedidosActivos.FormattingEnabled = true;
+            this.lstPedidosActivos.Location = new System.Drawing.Point(693, 35);
+            this.lstPedidosActivos.Name = "lstPedidosActivos";
+            this.lstPedidosActivos.Size = new System.Drawing.Size(280, 134);
+            this.lstPedidosActivos.TabIndex = 14;
+            this.lstPedidosActivos.SelectedIndexChanged += new System.EventHandler(this.lstPedidosActivos_SelectedIndexChanged);
+            // 
+            // btnEliminarPedido
+            // 
+            this.btnEliminarPedido.BackColor = System.Drawing.Color.Red;
+            this.btnEliminarPedido.ForeColor = System.Drawing.Color.White;
+            this.btnEliminarPedido.Location = new System.Drawing.Point(693, 175);
+            this.btnEliminarPedido.Name = "btnEliminarPedido";
+            this.btnEliminarPedido.Size = new System.Drawing.Size(120, 25);
+            this.btnEliminarPedido.TabIndex = 15;
+            this.btnEliminarPedido.Text = "Eliminar Pedido";
+            this.btnEliminarPedido.UseVisualStyleBackColor = false;
+            this.btnEliminarPedido.Click += new System.EventHandler(this.btnEliminarPedido_Click);
+            // 
+            // btnFinalizarTodos
+            // 
+            this.btnFinalizarTodos.BackColor = System.Drawing.Color.Orange;
+            this.btnFinalizarTodos.ForeColor = System.Drawing.Color.White;
+            this.btnFinalizarTodos.Location = new System.Drawing.Point(853, 175);
+            this.btnFinalizarTodos.Name = "btnFinalizarTodos";
+            this.btnFinalizarTodos.Size = new System.Drawing.Size(120, 25);
+            this.btnFinalizarTodos.TabIndex = 16;
+            this.btnFinalizarTodos.Text = "Finalizar Todos";
+            this.btnFinalizarTodos.UseVisualStyleBackColor = false;
+            this.btnFinalizarTodos.Click += new System.EventHandler(this.btnFinalizarTodos_Click);
+            // 
+            // lblTotalGeneral
+            // 
+            this.lblTotalGeneral.AutoSize = true;
+            this.lblTotalGeneral.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTotalGeneral.ForeColor = System.Drawing.Color.DarkGreen;
+            this.lblTotalGeneral.Location = new System.Drawing.Point(693, 215);
+            this.lblTotalGeneral.Name = "lblTotalGeneral";
+            this.lblTotalGeneral.Size = new System.Drawing.Size(132, 20);
+            this.lblTotalGeneral.TabIndex = 17;
+            this.lblTotalGeneral.Text = "Total Gral.: $0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(675, 375);
+            this.ClientSize = new System.Drawing.Size(990, 375);
+            this.Controls.Add(this.lblTotalGeneral);
+            this.Controls.Add(this.btnFinalizarTodos);
+            this.Controls.Add(this.btnEliminarPedido);
+            this.Controls.Add(this.lstPedidosActivos);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.txtResumenHistorial);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lstHistorial);
@@ -219,6 +283,11 @@
         private System.Windows.Forms.ListBox lstHistorial;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtResumenHistorial;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ListBox lstPedidosActivos;
+        private System.Windows.Forms.Button btnEliminarPedido;
+        private System.Windows.Forms.Button btnFinalizarTodos;
+        private System.Windows.Forms.Label lblTotalGeneral;
     }
 }
 

@@ -12,7 +12,8 @@ namespace BLL
         private PorcionAdicionalDAL _porcionDAL;
         private ComboDAL _comboDAL;
 
-        public PedidoBuilder PedidoActual { get; private set; }
+        public List<PedidoBuilder> PedidosActivos { get; private set; }
+        public PedidoBuilder PedidoSeleccionado { get; private set; }
         public List<Pedido> HistorialPedidos { get; private set; }
 
         private SistemaPedidos()
@@ -20,6 +21,7 @@ namespace BLL
             _pedidoDAL = new PedidoDAL();
             _porcionDAL = new PorcionAdicionalDAL();
             _comboDAL = new ComboDAL();
+            PedidosActivos = new List<PedidoBuilder>();
             HistorialPedidos = new List<Pedido>();
             CargarHistorial();
         }
@@ -35,26 +37,30 @@ namespace BLL
 
         public void CrearNuevoPedido(Combo combo)
         {
-            PedidoActual = new PedidoBuilder(combo);
+            var nuevoPedido = new PedidoBuilder(combo);
+            PedidosActivos.Add(nuevoPedido);
+            PedidoSeleccionado = nuevoPedido;
         }
 
         public void AgregarPorcionAdicional(TipoPorcion tipoPorcion)
         {
-            if (PedidoActual == null) return;
-            PedidoActual.AgregarPorcion(tipoPorcion);
+            if (PedidoSeleccionado == null) return;
+            PedidoSeleccionado.AgregarPorcion(tipoPorcion);
         }
 
         public void QuitarPorcionAdicional(TipoPorcion tipoPorcion)
         {
-            if (PedidoActual == null) return;
+            if (PedidoSeleccionado == null) return;
             
-            var descripcion = PedidoActual.ObtenerDescripcionCompleta();
+            var descripcion = PedidoSeleccionado.ObtenerDescripcionCompleta();
             var porcionTexto = "+ " + tipoPorcion.ToString();
             
             if (descripcion.Contains(porcionTexto))
             {
-                var comboActual = ObtenerComboPorTipo(PedidoActual.ObtenerTipoComboBase());
-                CrearNuevoPedido(comboActual);
+                var comboActual = ObtenerComboPorTipo(PedidoSeleccionado.ObtenerTipoComboBase());
+                var indicePedido = PedidosActivos.IndexOf(PedidoSeleccionado);
+                PedidosActivos[indicePedido] = new PedidoBuilder(comboActual);
+                PedidoSeleccionado = PedidosActivos[indicePedido];
                 ReconstruirPedidoSinPorcion(descripcion, tipoPorcion);
             }
         }
@@ -62,24 +68,26 @@ namespace BLL
         private void ReconstruirPedidoSinPorcion(string descripcionOriginal, TipoPorcion porcionAEliminar)
         {
             if (descripcionOriginal.Contains("+ Queso") && porcionAEliminar != TipoPorcion.Queso)
-                PedidoActual.AgregarQueso();
+                PedidoSeleccionado.AgregarQueso();
             if (descripcionOriginal.Contains("+ Carne") && porcionAEliminar != TipoPorcion.Carne)
-                PedidoActual.AgregarCarne();
+                PedidoSeleccionado.AgregarCarne();
             if (descripcionOriginal.Contains("+ Tomate") && porcionAEliminar != TipoPorcion.Tomate)
-                PedidoActual.AgregarTomate();
+                PedidoSeleccionado.AgregarTomate();
             if (descripcionOriginal.Contains("+ Papas") && porcionAEliminar != TipoPorcion.Papas)
-                PedidoActual.AgregarPapas();
+                PedidoSeleccionado.AgregarPapas();
         }
 
         public void FinalizarPedido()
         {
-            if (PedidoActual == null) return;
+            if (PedidoSeleccionado == null) return;
 
-            var pedidoParaGuardar = PedidoActual.ConvertirAPedido();
+            var pedidoParaGuardar = PedidoSeleccionado.ConvertirAPedido();
             pedidoParaGuardar.CalcularTotal();
             pedidoParaGuardar.Id = _pedidoDAL.GuardarPedido(pedidoParaGuardar);
             HistorialPedidos.Add(pedidoParaGuardar);
-            PedidoActual = null;
+            
+            PedidosActivos.Remove(PedidoSeleccionado);
+            PedidoSeleccionado = PedidosActivos.FirstOrDefault();
         }
 
         public void CargarHistorial()
@@ -113,21 +121,21 @@ namespace BLL
 
         public decimal ObtenerTotalPedidoActual()
         {
-            return PedidoActual?.ObtenerPrecioTotal() ?? 0m;
+            return PedidoSeleccionado?.ObtenerPrecioTotal() ?? 0m;
         }
 
         public string ObtenerResumenPedidoActual()
         {
-            if (PedidoActual == null) return "No hay pedido actual";
+            if (PedidoSeleccionado == null) return "No hay pedido actual";
             
-            var ingredientes = string.Join("\n  - ", PedidoActual.ObtenerIngredientes());
-            return $"{PedidoActual.ObtenerDescripcionCompleta()}\n\nIngredientes:\n  - {ingredientes}\n\nTOTAL: ${PedidoActual.ObtenerPrecioTotal():N0}";
+            var ingredientes = string.Join("\n  - ", PedidoSeleccionado.ObtenerIngredientes());
+            return $"{PedidoSeleccionado.ObtenerDescripcionCompleta()}\n\nIngredientes:\n  - {ingredientes}\n\nTOTAL: ${PedidoSeleccionado.ObtenerPrecioTotal():N0}";
         }
 
         public bool TienePorcion(TipoPorcion tipoPorcion)
         {
-            if (PedidoActual == null) return false;
-            return PedidoActual.ObtenerDescripcionCompleta().Contains("+ " + tipoPorcion.ToString());
+            if (PedidoSeleccionado == null) return false;
+            return PedidoSeleccionado.ObtenerDescripcionCompleta().Contains("+ " + tipoPorcion.ToString());
         }
 
         public List<Combo> ObtenerCombosDisponibles()
@@ -138,6 +146,65 @@ namespace BLL
         public Combo ObtenerComboPorTipo(TipoCombo tipo)
         {
             return _comboDAL.ObtenerComboPorTipo(tipo);
+        }
+
+        public void SeleccionarPedido(int indice)
+        {
+            if (indice >= 0 && indice < PedidosActivos.Count)
+            {
+                PedidoSeleccionado = PedidosActivos[indice];
+            }
+        }
+
+        public void EliminarPedidoActivo(int indice)
+        {
+            if (indice >= 0 && indice < PedidosActivos.Count)
+            {
+                var pedidoAEliminar = PedidosActivos[indice];
+                PedidosActivos.RemoveAt(indice);
+                
+                if (PedidoSeleccionado == pedidoAEliminar)
+                {
+                    PedidoSeleccionado = PedidosActivos.FirstOrDefault();
+                }
+            }
+        }
+
+        public void FinalizarTodosPedidos()
+        {
+            var pedidosParaGuardar = new List<Pedido>();
+            
+            foreach (var pedidoBuilder in PedidosActivos.ToList())
+            {
+                var pedidoParaGuardar = pedidoBuilder.ConvertirAPedido();
+                pedidoParaGuardar.CalcularTotal();
+                pedidoParaGuardar.Id = _pedidoDAL.GuardarPedido(pedidoParaGuardar);
+                pedidosParaGuardar.Add(pedidoParaGuardar);
+            }
+            
+            HistorialPedidos.AddRange(pedidosParaGuardar);
+            PedidosActivos.Clear();
+            PedidoSeleccionado = null;
+        }
+
+        public int ObtenerCantidadPedidosActivos()
+        {
+            return PedidosActivos.Count;
+        }
+
+        public string ObtenerResumenPedido(int indice)
+        {
+            if (indice >= 0 && indice < PedidosActivos.Count)
+            {
+                var pedido = PedidosActivos[indice];
+                return $"{pedido.ObtenerDescripcionCompleta()} - ${pedido.ObtenerPrecioTotal():N0}";
+            }
+            return string.Empty;
+        }
+
+        public decimal ObtenerTotalTodosPedidos()
+        {
+            return PedidosActivos.Sum(p => p.ObtenerPrecioTotal());
         }
     }
 }
