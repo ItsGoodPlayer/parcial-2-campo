@@ -32,7 +32,10 @@
             this.cmbCombos = new System.Windows.Forms.ComboBox();
             this.btnNuevoPedido = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.chkPorciones = new System.Windows.Forms.CheckedListBox();
+            this.btnAgregarQueso = new System.Windows.Forms.Button();
+            this.btnAgregarCarne = new System.Windows.Forms.Button();
+            this.btnAgregarTomate = new System.Windows.Forms.Button();
+            this.btnAgregarPapas = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtResumen = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -90,54 +93,89 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Porciones Adicionales";
             // 
-            // chkPorciones
+            // btnAgregarQueso
             // 
-            this.chkPorciones.FormattingEnabled = true;
-            this.chkPorciones.Location = new System.Drawing.Point(15, 95);
-            this.chkPorciones.Name = "chkPorciones";
-            this.chkPorciones.Size = new System.Drawing.Size(200, 79);
-            this.chkPorciones.TabIndex = 4;
-            this.chkPorciones.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chkPorciones_ItemCheck);
+            this.btnAgregarQueso.BackColor = System.Drawing.Color.LightYellow;
+            this.btnAgregarQueso.Location = new System.Drawing.Point(15, 95);
+            this.btnAgregarQueso.Name = "btnAgregarQueso";
+            this.btnAgregarQueso.Size = new System.Drawing.Size(100, 30);
+            this.btnAgregarQueso.TabIndex = 4;
+            this.btnAgregarQueso.Text = "+ Queso $800";
+            this.btnAgregarQueso.UseVisualStyleBackColor = false;
+            this.btnAgregarQueso.Click += new System.EventHandler(this.btnAgregarQueso_Click);
+            // 
+            // btnAgregarCarne
+            // 
+            this.btnAgregarCarne.BackColor = System.Drawing.Color.LightCoral;
+            this.btnAgregarCarne.Location = new System.Drawing.Point(125, 95);
+            this.btnAgregarCarne.Name = "btnAgregarCarne";
+            this.btnAgregarCarne.Size = new System.Drawing.Size(100, 30);
+            this.btnAgregarCarne.TabIndex = 5;
+            this.btnAgregarCarne.Text = "+ Carne $2000";
+            this.btnAgregarCarne.UseVisualStyleBackColor = false;
+            this.btnAgregarCarne.Click += new System.EventHandler(this.btnAgregarCarne_Click);
+            // 
+            // btnAgregarTomate
+            // 
+            this.btnAgregarTomate.BackColor = System.Drawing.Color.LightGreen;
+            this.btnAgregarTomate.Location = new System.Drawing.Point(15, 135);
+            this.btnAgregarTomate.Name = "btnAgregarTomate";
+            this.btnAgregarTomate.Size = new System.Drawing.Size(100, 30);
+            this.btnAgregarTomate.TabIndex = 6;
+            this.btnAgregarTomate.Text = "+ Tomate $500";
+            this.btnAgregarTomate.UseVisualStyleBackColor = false;
+            this.btnAgregarTomate.Click += new System.EventHandler(this.btnAgregarTomate_Click);
+            // 
+            // btnAgregarPapas
+            // 
+            this.btnAgregarPapas.BackColor = System.Drawing.Color.LightSalmon;
+            this.btnAgregarPapas.Location = new System.Drawing.Point(125, 135);
+            this.btnAgregarPapas.Name = "btnAgregarPapas";
+            this.btnAgregarPapas.Size = new System.Drawing.Size(100, 30);
+            this.btnAgregarPapas.TabIndex = 7;
+            this.btnAgregarPapas.Text = "+ Papas $1000";
+            this.btnAgregarPapas.UseVisualStyleBackColor = false;
+            this.btnAgregarPapas.Click += new System.EventHandler(this.btnAgregarPapas_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(12, 195);
+            this.label3.Location = new System.Drawing.Point(12, 180);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 17);
-            this.label3.TabIndex = 5;
+            this.label3.TabIndex = 8;
             this.label3.Text = "Pedido Actual";
             // 
             // txtResumen
             // 
-            this.txtResumen.Location = new System.Drawing.Point(15, 215);
+            this.txtResumen.Location = new System.Drawing.Point(15, 200);
             this.txtResumen.Multiline = true;
             this.txtResumen.Name = "txtResumen";
             this.txtResumen.ReadOnly = true;
             this.txtResumen.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtResumen.Size = new System.Drawing.Size(315, 100);
-            this.txtResumen.TabIndex = 6;
+            this.txtResumen.TabIndex = 9;
             // 
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.lblTotal.ForeColor = System.Drawing.Color.Black;
-            this.lblTotal.Location = new System.Drawing.Point(15, 325);
+            this.lblTotal.Location = new System.Drawing.Point(15, 310);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(79, 20);
-            this.lblTotal.TabIndex = 7;
+            this.lblTotal.TabIndex = 10;
             this.lblTotal.Text = "Total: $0";
             // 
             // btnFinalizarPedido
             // 
             this.btnFinalizarPedido.BackColor = System.Drawing.SystemColors.Control;
             this.btnFinalizarPedido.ForeColor = System.Drawing.Color.Black;
-            this.btnFinalizarPedido.Location = new System.Drawing.Point(230, 320);
+            this.btnFinalizarPedido.Location = new System.Drawing.Point(230, 305);
             this.btnFinalizarPedido.Name = "btnFinalizarPedido";
             this.btnFinalizarPedido.Size = new System.Drawing.Size(100, 30);
-            this.btnFinalizarPedido.TabIndex = 8;
+            this.btnFinalizarPedido.TabIndex = 11;
             this.btnFinalizarPedido.Text = "Finalizar Pedido";
             this.btnFinalizarPedido.UseVisualStyleBackColor = false;
             this.btnFinalizarPedido.Click += new System.EventHandler(this.btnFinalizarPedido_Click);
@@ -149,7 +187,7 @@
             this.label4.Location = new System.Drawing.Point(350, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(154, 17);
-            this.label4.TabIndex = 9;
+            this.label4.TabIndex = 12;
             this.label4.Text = "Historial de Pedidos";
             // 
             // lstHistorial
@@ -158,7 +196,7 @@
             this.lstHistorial.Location = new System.Drawing.Point(353, 35);
             this.lstHistorial.Name = "lstHistorial";
             this.lstHistorial.Size = new System.Drawing.Size(300, 134);
-            this.lstHistorial.TabIndex = 10;
+            this.lstHistorial.TabIndex = 13;
             this.lstHistorial.SelectedIndexChanged += new System.EventHandler(this.lstHistorial_SelectedIndexChanged);
             // 
             // label5
@@ -168,7 +206,7 @@
             this.label5.Location = new System.Drawing.Point(350, 195);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(141, 17);
-            this.label5.TabIndex = 11;
+            this.label5.TabIndex = 14;
             this.label5.Text = "Detalle del Pedido";
             // 
             // txtResumenHistorial
@@ -179,7 +217,7 @@
             this.txtResumenHistorial.ReadOnly = true;
             this.txtResumenHistorial.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtResumenHistorial.Size = new System.Drawing.Size(300, 135);
-            this.txtResumenHistorial.TabIndex = 12;
+            this.txtResumenHistorial.TabIndex = 15;
             // 
             // label6
             // 
@@ -188,7 +226,7 @@
             this.label6.Location = new System.Drawing.Point(690, 15);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(126, 17);
-            this.label6.TabIndex = 13;
+            this.label6.TabIndex = 16;
             this.label6.Text = "Pedidos Activos";
             // 
             // lstPedidosActivos
@@ -197,7 +235,7 @@
             this.lstPedidosActivos.Location = new System.Drawing.Point(693, 35);
             this.lstPedidosActivos.Name = "lstPedidosActivos";
             this.lstPedidosActivos.Size = new System.Drawing.Size(280, 134);
-            this.lstPedidosActivos.TabIndex = 14;
+            this.lstPedidosActivos.TabIndex = 17;
             this.lstPedidosActivos.SelectedIndexChanged += new System.EventHandler(this.lstPedidosActivos_SelectedIndexChanged);
             // 
             // btnEliminarPedido
@@ -207,7 +245,7 @@
             this.btnEliminarPedido.Location = new System.Drawing.Point(693, 175);
             this.btnEliminarPedido.Name = "btnEliminarPedido";
             this.btnEliminarPedido.Size = new System.Drawing.Size(120, 25);
-            this.btnEliminarPedido.TabIndex = 15;
+            this.btnEliminarPedido.TabIndex = 18;
             this.btnEliminarPedido.Text = "Eliminar Pedido";
             this.btnEliminarPedido.UseVisualStyleBackColor = false;
             this.btnEliminarPedido.Click += new System.EventHandler(this.btnEliminarPedido_Click);
@@ -219,7 +257,7 @@
             this.btnFinalizarTodos.Location = new System.Drawing.Point(853, 175);
             this.btnFinalizarTodos.Name = "btnFinalizarTodos";
             this.btnFinalizarTodos.Size = new System.Drawing.Size(120, 25);
-            this.btnFinalizarTodos.TabIndex = 16;
+            this.btnFinalizarTodos.TabIndex = 19;
             this.btnFinalizarTodos.Text = "Finalizar Todos";
             this.btnFinalizarTodos.UseVisualStyleBackColor = false;
             this.btnFinalizarTodos.Click += new System.EventHandler(this.btnFinalizarTodos_Click);
@@ -232,7 +270,7 @@
             this.lblTotalGeneral.Location = new System.Drawing.Point(693, 215);
             this.lblTotalGeneral.Name = "lblTotalGeneral";
             this.lblTotalGeneral.Size = new System.Drawing.Size(132, 20);
-            this.lblTotalGeneral.TabIndex = 17;
+            this.lblTotalGeneral.TabIndex = 20;
             this.lblTotalGeneral.Text = "Total Gral.: $0";
             // 
             // Form1
@@ -253,7 +291,10 @@
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.txtResumen);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.chkPorciones);
+            this.Controls.Add(this.btnAgregarPapas);
+            this.Controls.Add(this.btnAgregarTomate);
+            this.Controls.Add(this.btnAgregarCarne);
+            this.Controls.Add(this.btnAgregarQueso);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnNuevoPedido);
             this.Controls.Add(this.cmbCombos);
@@ -274,7 +315,10 @@
         private System.Windows.Forms.ComboBox cmbCombos;
         private System.Windows.Forms.Button btnNuevoPedido;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckedListBox chkPorciones;
+        private System.Windows.Forms.Button btnAgregarQueso;
+        private System.Windows.Forms.Button btnAgregarCarne;
+        private System.Windows.Forms.Button btnAgregarTomate;
+        private System.Windows.Forms.Button btnAgregarPapas;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtResumen;
         private System.Windows.Forms.Label lblTotal;

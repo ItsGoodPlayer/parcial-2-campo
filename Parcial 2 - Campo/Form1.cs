@@ -15,7 +15,6 @@ namespace Parcial_2___Campo
     public partial class Form1 : Form
     {
         private SistemaPedidos sistema;
-        private List<PorcionAdicional> porcionesDisponibles;
 
         public Form1()
         {
@@ -26,9 +25,7 @@ namespace Parcial_2___Campo
         private void InicializarSistema()
         {
             sistema = SistemaPedidos.ObtenerInstancia();
-            porcionesDisponibles = sistema.ObtenerPorcionesDisponibles();
             CargarCombos();
-            CargarPorcionesAdicionales();
             CargarHistorial();
             ActualizarEstado();
         }
@@ -43,15 +40,6 @@ namespace Parcial_2___Campo
             cmbCombos.DisplayMember = "Nombre";
         }
 
-        private void CargarPorcionesAdicionales()
-        {
-            chkPorciones.Items.Clear();
-            foreach (var porcion in porcionesDisponibles)
-            {
-                chkPorciones.Items.Add(porcion, false);
-            }
-            chkPorciones.DisplayMember = "ToString";
-        }
 
         private void CargarHistorial()
         {
@@ -70,19 +58,23 @@ namespace Parcial_2___Campo
             
             cmbCombos.Enabled = true;
             btnNuevoPedido.Enabled = cmbCombos.SelectedItem != null;
-            chkPorciones.Enabled = hayPedidoSeleccionado;
+            
+            // Habilitar botones de porciones solo si hay pedido seleccionado
+            btnAgregarQueso.Enabled = hayPedidoSeleccionado;
+            btnAgregarCarne.Enabled = hayPedidoSeleccionado;
+            btnAgregarTomate.Enabled = hayPedidoSeleccionado;
+            btnAgregarPapas.Enabled = hayPedidoSeleccionado;
+            
             btnFinalizarPedido.Enabled = hayPedidoSeleccionado;
 
             if (hayPedidoSeleccionado)
             {
                 ActualizarResumenPedido();
-                ActualizarCheckboxesPorciones();
             }
             else
             {
                 txtResumen.Text = hayPedidosActivos ? "Seleccione un pedido de la lista para editarlo." : "No hay pedidos activos. Seleccione un combo y presione 'Nuevo Pedido'.";
                 lblTotal.Text = "Total: $0";
-                LimpiarCheckboxes();
             }
             
             ActualizarListaPedidosActivos();
@@ -97,25 +89,6 @@ namespace Parcial_2___Campo
             }
         }
 
-        private void ActualizarCheckboxesPorciones()
-        {
-            if (sistema.PedidoSeleccionado == null) return;
-
-            for (int i = 0; i < chkPorciones.Items.Count; i++)
-            {
-                var porcion = porcionesDisponibles[i];
-                bool tieneEsta = sistema.TienePorcion(porcion.Tipo);
-                chkPorciones.SetItemChecked(i, tieneEsta);
-            }
-        }
-
-        private void LimpiarCheckboxes()
-        {
-            for (int i = 0; i < chkPorciones.Items.Count; i++)
-            {
-                chkPorciones.SetItemChecked(i, false);
-            }
-        }
 
         private void cmbCombos_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -131,26 +104,6 @@ namespace Parcial_2___Campo
             }
         }
 
-        private void chkPorciones_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            if (sistema.PedidoSeleccionado == null) return;
-
-            var porcion = porcionesDisponibles[e.Index];
-            
-            BeginInvoke(new Action(() =>
-            {
-                if (e.NewValue == CheckState.Checked)
-                {
-                    sistema.AgregarPorcionAdicional(porcion.Tipo);
-                }
-                else
-                {
-                    sistema.QuitarPorcionAdicional(porcion.Tipo);
-                }
-                ActualizarResumenPedido();
-                ActualizarListaPedidosActivos();
-            }));
-        }
 
         private void btnFinalizarPedido_Click(object sender, EventArgs e)
         {
@@ -167,7 +120,6 @@ namespace Parcial_2___Campo
         private void LimpiarSelecciones()
         {
             cmbCombos.SelectedIndex = -1;
-            LimpiarCheckboxes();
         }
 
         private void lstHistorial_SelectedIndexChanged(object sender, EventArgs e)
@@ -238,6 +190,46 @@ namespace Parcial_2___Campo
             }
             
             btnEliminarPedido.Enabled = lstPedidosActivos.SelectedIndex >= 0;
+        }
+
+        private void btnAgregarQueso_Click(object sender, EventArgs e)
+        {
+            if (sistema.PedidoSeleccionado != null)
+            {
+                sistema.AgregarPorcionAdicional(TipoPorcion.Queso);
+                ActualizarResumenPedido();
+                ActualizarListaPedidosActivos();
+            }
+        }
+
+        private void btnAgregarCarne_Click(object sender, EventArgs e)
+        {
+            if (sistema.PedidoSeleccionado != null)
+            {
+                sistema.AgregarPorcionAdicional(TipoPorcion.Carne);
+                ActualizarResumenPedido();
+                ActualizarListaPedidosActivos();
+            }
+        }
+
+        private void btnAgregarTomate_Click(object sender, EventArgs e)
+        {
+            if (sistema.PedidoSeleccionado != null)
+            {
+                sistema.AgregarPorcionAdicional(TipoPorcion.Tomate);
+                ActualizarResumenPedido();
+                ActualizarListaPedidosActivos();
+            }
+        }
+
+        private void btnAgregarPapas_Click(object sender, EventArgs e)
+        {
+            if (sistema.PedidoSeleccionado != null)
+            {
+                sistema.AgregarPorcionAdicional(TipoPorcion.Papas);
+                ActualizarResumenPedido();
+                ActualizarListaPedidosActivos();
+            }
         }
     }
 }
