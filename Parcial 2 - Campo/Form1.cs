@@ -36,9 +36,10 @@ namespace Parcial_2___Campo
         private void CargarCombos()
         {
             cmbCombos.Items.Clear();
-            cmbCombos.Items.Add(new ComboBasico());
-            cmbCombos.Items.Add(new ComboFamiliar());
-            cmbCombos.Items.Add(new ComboEspecial());
+            foreach (var combo in sistema.ObtenerCombosDisponibles())
+            {
+                cmbCombos.Items.Add(combo);
+            }
             cmbCombos.DisplayMember = "Nombre";
         }
 

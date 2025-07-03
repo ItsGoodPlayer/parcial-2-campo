@@ -10,6 +10,7 @@ namespace BLL
         private static SistemaPedidos _instancia;
         private PedidoDAL _pedidoDAL;
         private PorcionAdicionalDAL _porcionDAL;
+        private ComboDAL _comboDAL;
 
         public PedidoBuilder PedidoActual { get; private set; }
         public List<Pedido> HistorialPedidos { get; private set; }
@@ -18,6 +19,7 @@ namespace BLL
         {
             _pedidoDAL = new PedidoDAL();
             _porcionDAL = new PorcionAdicionalDAL();
+            _comboDAL = new ComboDAL();
             HistorialPedidos = new List<Pedido>();
             CargarHistorial();
         }
@@ -125,6 +127,11 @@ namespace BLL
         {
             if (PedidoActual == null) return false;
             return PedidoActual.ObtenerDescripcionCompleta().Contains("+ " + tipoPorcion.ToString());
+        }
+
+        public List<Combo> ObtenerCombosDisponibles()
+        {
+            return _comboDAL.CargarCombos();
         }
     }
 }
