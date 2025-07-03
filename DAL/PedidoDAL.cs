@@ -72,12 +72,18 @@ namespace DAL
 
             foreach (DataRow row in tabla.Rows)
             {
+                var combo = ComboFactory.CrearCombo(row["Tipo"].ToString());
+                combo.Id = Convert.ToInt32(row["ComboId"]);
+                combo.Nombre = row["Nombre"].ToString();
+                combo.Precio = Convert.ToDecimal(row["Precio"]);
+                combo.Descripcion = row["Descripcion"].ToString();
+
                 var pedido = new Pedido
                 {
                     Id = Convert.ToInt32(row["Id"]),
                     Fecha = Convert.ToDateTime(row["FechaPedido"]),
                     Total = Convert.ToDecimal(row["Total"]),
-                    Combo = ComboFactory.CrearCombo(row["Tipo"].ToString())
+                    Combo = combo
                 };
 
                 pedido.PorcionesAdicionales = CargarPorcionesPedido(pedido.Id);
@@ -154,12 +160,18 @@ namespace DAL
             if (tabla.Rows.Count > 0)
             {
                 DataRow row = tabla.Rows[0];
+                var combo = ComboFactory.CrearCombo(row["Tipo"].ToString());
+                combo.Id = Convert.ToInt32(row["ComboId"]);
+                combo.Nombre = row["Nombre"].ToString();
+                combo.Precio = Convert.ToDecimal(row["Precio"]);
+                combo.Descripcion = row["Descripcion"].ToString();
+
                 var pedido = new Pedido
                 {
                     Id = Convert.ToInt32(row["Id"]),
                     Fecha = Convert.ToDateTime(row["FechaPedido"]),
                     Total = Convert.ToDecimal(row["Total"]),
-                    Combo = ComboFactory.CrearCombo(row["Tipo"].ToString())
+                    Combo = combo
                 };
 
                 pedido.PorcionesAdicionales = CargarPorcionesPedido(pedido.Id);
