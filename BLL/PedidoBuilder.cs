@@ -1,4 +1,5 @@
 using BE;
+using DAL;
 using System.Collections.Generic;
 
 namespace BLL
@@ -6,10 +7,12 @@ namespace BLL
     public class PedidoBuilder
     {
         private IPedidoComponent _pedidoComponent;
+        private PorcionAdicionalDAL _porcionDAL;
 
         public PedidoBuilder(TipoCombo tipoCombo)
         {
             _pedidoComponent = (IPedidoComponent)BE.ComboFactory.CrearCombo(tipoCombo);
+            _porcionDAL = new PorcionAdicionalDAL();
         }
 
         public PedidoBuilder AgregarQueso()
@@ -92,19 +95,19 @@ namespace BLL
 
             if (descripcionCompleta.Contains("+ Queso"))
             {
-                pedido.PorcionesAdicionales.Add(new PorcionAdicional(TipoPorcion.Queso, 800m));
+                pedido.PorcionesAdicionales.Add(new PorcionAdicional(TipoPorcion.Queso, _porcionDAL.ObtenerPrecioPorcion(TipoPorcion.Queso)));
             }
             if (descripcionCompleta.Contains("+ Carne"))
             {
-                pedido.PorcionesAdicionales.Add(new PorcionAdicional(TipoPorcion.Carne, 2000m));
+                pedido.PorcionesAdicionales.Add(new PorcionAdicional(TipoPorcion.Carne, _porcionDAL.ObtenerPrecioPorcion(TipoPorcion.Carne)));
             }
             if (descripcionCompleta.Contains("+ Tomate"))
             {
-                pedido.PorcionesAdicionales.Add(new PorcionAdicional(TipoPorcion.Tomate, 500m));
+                pedido.PorcionesAdicionales.Add(new PorcionAdicional(TipoPorcion.Tomate, _porcionDAL.ObtenerPrecioPorcion(TipoPorcion.Tomate)));
             }
             if (descripcionCompleta.Contains("+ Papas"))
             {
-                pedido.PorcionesAdicionales.Add(new PorcionAdicional(TipoPorcion.Papas, 1000m));
+                pedido.PorcionesAdicionales.Add(new PorcionAdicional(TipoPorcion.Papas, _porcionDAL.ObtenerPrecioPorcion(TipoPorcion.Papas)));
             }
 
             pedido.Total = _pedidoComponent.CalcularPrecio();

@@ -60,5 +60,14 @@ namespace DAL
             object resultado = EscribirEscalar(sql, parametros);
             return resultado != null ? Convert.ToInt32(resultado) : 0;
         }
+
+        public decimal ObtenerPrecioPorcion(TipoPorcion tipo)
+        {
+            string sql = "SELECT Precio FROM PorcionesAdicionales WHERE Tipo = @Tipo";
+            var parametros = new List<SqlParameter> { CrearParametro("@Tipo", tipo.ToString()) };
+            
+            object resultado = EscribirEscalar(sql, parametros);
+            return resultado != null ? Convert.ToDecimal(resultado) : 0m;
+        }
     }
 }
