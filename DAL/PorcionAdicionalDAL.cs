@@ -57,7 +57,7 @@ namespace DAL
             string sql = "SELECT Id FROM PorcionesAdicionales WHERE Tipo = @Tipo";
             var parametros = new List<SqlParameter> { CrearParametro("@Tipo", tipo.ToString()) };
             
-            object resultado = EscribirEscalar(sql, parametros);
+            object resultado = LeerEscalar(sql, parametros);
             return resultado != null ? Convert.ToInt32(resultado) : 0;
         }
 
@@ -66,7 +66,7 @@ namespace DAL
             string sql = "SELECT Precio FROM PorcionesAdicionales WHERE Tipo = @Tipo";
             var parametros = new List<SqlParameter> { CrearParametro("@Tipo", tipo.ToString()) };
             
-            object resultado = EscribirEscalar(sql, parametros);
+            object resultado = LeerEscalar(sql, parametros);
             return resultado != null ? Convert.ToDecimal(resultado) : 0m;
         }
     }

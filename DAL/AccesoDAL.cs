@@ -139,5 +139,24 @@ namespace DAL
             return res;
         }
 
+        protected object LeerEscalar(string sql, List<SqlParameter> parametros = null)
+        {
+            object res;
+            
+        
+            AbrirConexion();
+            SqlCommand cmd = CrearComando(sql, parametros);
+            res = cmd.ExecuteScalar();
+            cmd.Parameters.Clear();
+            cmd.Dispose();
+        
+
+        
+            CerrarConexion();
+        
+
+            return res;
+        }
+
     }
 }
