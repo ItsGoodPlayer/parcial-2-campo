@@ -130,14 +130,8 @@ namespace DAL
             object res;
             SqlCommand cmd = CrearComando(sql, parametros);
 
-            try
-            {
-                res = cmd.ExecuteScalar();
-            }
-            catch (Exception ex)
-            {
-                res = null;
-            }
+            res = cmd.ExecuteScalar();
+            
 
             cmd.Parameters.Clear();
             cmd.Dispose();
