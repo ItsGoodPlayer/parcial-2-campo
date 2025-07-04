@@ -1,6 +1,7 @@
 using BE;
 using DAL;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BLL
 {
@@ -86,11 +87,26 @@ namespace BLL
             var pedido = new Pedido
             {
                 Combo = _comboBase,
-                PorcionesAdicionales = _pedidoComponent.ExtraerPorcionesRecursivamente()
+                // Convertir múltiples decorators individuales a cantidades agregadas
+                PorcionesAdicionales = AgregarCantidadesDePorciones(_pedidoComponent.ExtraerPorcionesRecursivamente())
             };
 
             pedido.Total = _pedidoComponent.CalcularPrecio();
             return pedido;
+        }
+
+        private List<PorcionAdicional> AgregarCantidadesDePorciones(List<PorcionAdicional> porcionesIndividuales)
+        {
+            // Agrupar porciones del mismo tipo y sumar cantidades
+            var grupos = porcionesIndividuales
+                .GroupBy(p => p.Tipo)
+                .Select(g => new PorcionAdicional(g.Key, g.First().Precio)
+                {
+                    Cantidad = g.Sum(p => p.Cantidad)
+                })
+                .ToList();
+            
+            return grupos;
         }
     }
 }

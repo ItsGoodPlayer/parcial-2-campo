@@ -206,5 +206,38 @@ namespace BLL
         {
             return PedidosActivos.Sum(p => p.ObtenerPrecioTotal());
         }
+
+        public IPedidoComponent ReconstruirPedidoDesdeBaseDatos(Pedido pedido)
+        {
+            IPedidoComponent componente = (IPedidoComponent)pedido.Combo;
+            
+            // Aplicar decorators según las cantidades guardadas en BD
+            foreach (var porcion in pedido.PorcionesAdicionales)
+            {
+                for (int i = 0; i < porcion.Cantidad; i++)
+                {
+                    componente = CrearDecorator(porcion.Tipo, componente);
+                }
+            }
+            
+            return componente;
+        }
+
+        private IPedidoComponent CrearDecorator(TipoPorcion tipo, IPedidoComponent componente)
+        {
+            switch (tipo)
+            {
+                case TipoPorcion.Queso:
+                    return new QuesoDecorator(componente);
+                case TipoPorcion.Carne:
+                    return new CarneDecorator(componente);
+                case TipoPorcion.Tomate:
+                    return new TomateDecorator(componente);
+                case TipoPorcion.Papas:
+                    return new PapasDecorator(componente);
+                default:
+                    return componente;
+            }
+        }
     }
 }

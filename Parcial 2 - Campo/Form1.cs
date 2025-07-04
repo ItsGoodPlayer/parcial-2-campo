@@ -167,7 +167,12 @@ namespace Parcial_2___Campo
         {
             if (lstHistorial.SelectedItem is Pedido pedidoSeleccionado)
             {
-                txtResumenHistorial.Text = pedidoSeleccionado.ObtenerResumen();
+                // Recrear la estructura de decorators para mostrar descripción completa
+                var pedidoReconstruido = sistema.ReconstruirPedidoDesdeBaseDatos(pedidoSeleccionado);
+                string descripcionCompleta = pedidoReconstruido.ObtenerDescripcion();
+                
+                // Mostrar tanto la descripción con decorators como el resumen original
+                txtResumenHistorial.Text = $"Descripción completa:\n{descripcionCompleta}\n\n{pedidoSeleccionado.ObtenerResumen()}";
             }
         }
 
