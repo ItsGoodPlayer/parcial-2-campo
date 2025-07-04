@@ -26,5 +26,15 @@ namespace BE
             ingredientes.Add("Carne extra");
             return ingredientes;
         }
+        
+        protected override TipoPorcion GetTipoPorcion()
+        {
+            return TipoPorcion.Carne;
+        }
+        
+        protected override decimal GetPrecio()
+        {
+            return PRECIO_CARNE;
+        }
     }
 }

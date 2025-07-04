@@ -8,5 +8,6 @@ namespace BE
         string ObtenerDescripcion();
         List<string> ObtenerIngredientes();
         TipoCombo ObtenerTipoComboBase();
+        List<PorcionAdicional> ExtraerPorcionesRecursivamente();
     }
 }

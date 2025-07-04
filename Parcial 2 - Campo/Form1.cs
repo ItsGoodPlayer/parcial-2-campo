@@ -55,6 +55,7 @@ namespace Parcial_2___Campo
         {
             bool hayPedidoSeleccionado = sistema.PedidoSeleccionado != null;
             bool hayPedidosActivos = sistema.ObtenerCantidadPedidosActivos() > 0;
+            int cantidadPedidos = sistema.ObtenerCantidadPedidosActivos();
             
             cmbCombos.Enabled = true;
             btnNuevoPedido.Enabled = cmbCombos.SelectedItem != null;
@@ -65,7 +66,20 @@ namespace Parcial_2___Campo
             btnAgregarTomate.Enabled = hayPedidoSeleccionado;
             btnAgregarPapas.Enabled = hayPedidoSeleccionado;
             
-            btnFinalizarPedido.Enabled = hayPedidoSeleccionado;
+            // Botón inteligente que se adapta al contexto
+            btnFinalizarPedido.Enabled = hayPedidosActivos;
+            if (cantidadPedidos > 1)
+            {
+                btnFinalizarPedido.Text = $"Finalizar Todos ({cantidadPedidos})";
+            }
+            else if (cantidadPedidos == 1)
+            {
+                btnFinalizarPedido.Text = "Finalizar";
+            }
+            else
+            {
+                btnFinalizarPedido.Text = "Finalizar";
+            }
 
             if (hayPedidoSeleccionado)
             {
@@ -107,13 +121,40 @@ namespace Parcial_2___Campo
 
         private void btnFinalizarPedido_Click(object sender, EventArgs e)
         {
-            if (sistema.PedidoSeleccionado != null)
+            int cantidadPedidos = sistema.ObtenerCantidadPedidosActivos();
+            if (cantidadPedidos == 0) return;
+            
+            string mensaje;
+            if (cantidadPedidos > 1)
             {
-                sistema.FinalizarPedido();
+                var totalTodos = sistema.ObtenerTotalTodosPedidos();
+                mensaje = $"¿Confirma finalizar todos los {cantidadPedidos} pedidos?\nTotal: ${totalTodos:N0}";
+            }
+            else
+            {
+                mensaje = "¿Confirma finalizar este pedido?";
+            }
+            
+            var resultado = MessageBox.Show(mensaje, "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+                if (cantidadPedidos > 1)
+                {
+                    sistema.FinalizarTodosPedidos();
+                }
+                else
+                {
+                    sistema.FinalizarPedido();
+                }
+                
                 CargarHistorial();
                 LimpiarSelecciones();
                 ActualizarEstado();
-                MessageBox.Show("Pedido finalizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                string mensajeExito = cantidadPedidos > 1 
+                    ? "Todos los pedidos finalizados correctamente." 
+                    : "Pedido finalizado correctamente.";
+                MessageBox.Show(mensajeExito, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -143,28 +184,9 @@ namespace Parcial_2___Campo
             lblTotalGeneral.Text = $"Total Gral.: ${sistema.ObtenerTotalTodosPedidos():N0}";
             
             bool hayPedidos = sistema.ObtenerCantidadPedidosActivos() > 0;
-            btnFinalizarTodos.Enabled = hayPedidos;
             btnEliminarPedido.Enabled = hayPedidos && lstPedidosActivos.SelectedIndex >= 0;
         }
 
-        private void btnFinalizarTodos_Click(object sender, EventArgs e)
-        {
-            if (sistema.ObtenerCantidadPedidosActivos() > 0)
-            {
-                var totalTodos = sistema.ObtenerTotalTodosPedidos();
-                var resultado = MessageBox.Show($"¿Confirma finalizar todos los pedidos?\nTotal: ${totalTodos:N0}", 
-                    "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                
-                if (resultado == DialogResult.Yes)
-                {
-                    sistema.FinalizarTodosPedidos();
-                    CargarHistorial();
-                    LimpiarSelecciones();
-                    ActualizarEstado();
-                    MessageBox.Show("Todos los pedidos finalizados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-        }
 
         private void btnEliminarPedido_Click(object sender, EventArgs e)
         {

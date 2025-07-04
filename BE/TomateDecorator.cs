@@ -26,5 +26,15 @@ namespace BE
             ingredientes.Add("Tomate");
             return ingredientes;
         }
+        
+        protected override TipoPorcion GetTipoPorcion()
+        {
+            return TipoPorcion.Tomate;
+        }
+        
+        protected override decimal GetPrecio()
+        {
+            return PRECIO_TOMATE;
+        }
     }
 }

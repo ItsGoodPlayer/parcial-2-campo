@@ -30,5 +30,20 @@ namespace BE
         {
             return componente.ObtenerTipoComboBase();
         }
+        
+        public virtual List<PorcionAdicional> ExtraerPorcionesRecursivamente()
+        {
+            // Recursión: obtener porciones del componente envuelto
+            var porciones = componente.ExtraerPorcionesRecursivamente();
+            
+            // Agregar mi propia porción
+            porciones.Add(new PorcionAdicional(GetTipoPorcion(), GetPrecio()));
+            
+            return porciones;
+        }
+        
+        // Métodos abstractos que cada decorator específico debe implementar
+        protected abstract TipoPorcion GetTipoPorcion();
+        protected abstract decimal GetPrecio();
     }
 }

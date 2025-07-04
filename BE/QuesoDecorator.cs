@@ -26,5 +26,15 @@ namespace BE
             ingredientes.Add("Queso extra");
             return ingredientes;
         }
+        
+        protected override TipoPorcion GetTipoPorcion()
+        {
+            return TipoPorcion.Queso;
+        }
+        
+        protected override decimal GetPrecio()
+        {
+            return PRECIO_QUESO;
+        }
     }
 }

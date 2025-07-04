@@ -47,7 +47,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lstPedidosActivos = new System.Windows.Forms.ListBox();
             this.btnEliminarPedido = new System.Windows.Forms.Button();
-            this.btnFinalizarTodos = new System.Windows.Forms.Button();
             this.lblTotalGeneral = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -250,17 +249,6 @@
             this.btnEliminarPedido.UseVisualStyleBackColor = false;
             this.btnEliminarPedido.Click += new System.EventHandler(this.btnEliminarPedido_Click);
             // 
-            // btnFinalizarTodos
-            // 
-            this.btnFinalizarTodos.BackColor = System.Drawing.Color.Orange;
-            this.btnFinalizarTodos.ForeColor = System.Drawing.Color.White;
-            this.btnFinalizarTodos.Location = new System.Drawing.Point(853, 175);
-            this.btnFinalizarTodos.Name = "btnFinalizarTodos";
-            this.btnFinalizarTodos.Size = new System.Drawing.Size(120, 25);
-            this.btnFinalizarTodos.TabIndex = 19;
-            this.btnFinalizarTodos.Text = "Finalizar Todos";
-            this.btnFinalizarTodos.UseVisualStyleBackColor = false;
-            this.btnFinalizarTodos.Click += new System.EventHandler(this.btnFinalizarTodos_Click);
             // 
             // lblTotalGeneral
             // 
@@ -270,7 +258,7 @@
             this.lblTotalGeneral.Location = new System.Drawing.Point(693, 215);
             this.lblTotalGeneral.Name = "lblTotalGeneral";
             this.lblTotalGeneral.Size = new System.Drawing.Size(132, 20);
-            this.lblTotalGeneral.TabIndex = 20;
+            this.lblTotalGeneral.TabIndex = 19;
             this.lblTotalGeneral.Text = "Total Gral.: $0";
             // 
             // Form1
@@ -279,7 +267,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(990, 375);
             this.Controls.Add(this.lblTotalGeneral);
-            this.Controls.Add(this.btnFinalizarTodos);
             this.Controls.Add(this.btnEliminarPedido);
             this.Controls.Add(this.lstPedidosActivos);
             this.Controls.Add(this.label6);
@@ -330,7 +317,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListBox lstPedidosActivos;
         private System.Windows.Forms.Button btnEliminarPedido;
-        private System.Windows.Forms.Button btnFinalizarTodos;
         private System.Windows.Forms.Label lblTotalGeneral;
     }
 }

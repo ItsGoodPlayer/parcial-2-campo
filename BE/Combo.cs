@@ -1,8 +1,9 @@
 using System;
+using System.Collections.Generic;
 
 namespace BE
 {
-    public abstract class Combo
+    public abstract class Combo : IPedidoComponent
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
@@ -24,5 +25,25 @@ namespace BE
         {
             return $"{Nombre} (${Precio:N0})";
         }
+
+        // Implementación de IPedidoComponent
+        public string ObtenerDescripcion()
+        {
+            return Nombre;
+        }
+
+        public TipoCombo ObtenerTipoComboBase()
+        {
+            return Tipo;
+        }
+
+        public List<PorcionAdicional> ExtraerPorcionesRecursivamente()
+        {
+            // Caso base: el combo no tiene porciones adicionales
+            return new List<PorcionAdicional>();
+        }
+
+        // Método abstracto que cada combo específico debe implementar
+        public abstract List<string> ObtenerIngredientes();
     }
 }

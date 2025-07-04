@@ -26,5 +26,15 @@ namespace BE
             ingredientes.Add("Papas extra");
             return ingredientes;
         }
+        
+        protected override TipoPorcion GetTipoPorcion()
+        {
+            return TipoPorcion.Papas;
+        }
+        
+        protected override decimal GetPrecio()
+        {
+            return PRECIO_PAPAS;
+        }
     }
 }

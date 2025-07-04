@@ -7,14 +7,12 @@ namespace BLL
     public class PedidoBuilder
     {
         private IPedidoComponent _pedidoComponent;
-        private PorcionAdicionalDAL _porcionDAL;
         private Combo _comboBase;
 
         public PedidoBuilder(Combo combo)
         {
             _comboBase = combo;
             _pedidoComponent = (IPedidoComponent)combo;
-            _porcionDAL = new PorcionAdicionalDAL();
         }
 
         public PedidoBuilder AgregarQueso()
@@ -87,27 +85,9 @@ namespace BLL
         {
             var pedido = new Pedido
             {
-                Combo = _comboBase
+                Combo = _comboBase,
+                PorcionesAdicionales = _pedidoComponent.ExtraerPorcionesRecursivamente()
             };
-
-            var descripcionCompleta = _pedidoComponent.ObtenerDescripcion();
-
-            if (descripcionCompleta.Contains("+ Queso"))
-            {
-                pedido.PorcionesAdicionales.Add(new PorcionAdicional(TipoPorcion.Queso, _porcionDAL.ObtenerPrecioPorcion(TipoPorcion.Queso)));
-            }
-            if (descripcionCompleta.Contains("+ Carne"))
-            {
-                pedido.PorcionesAdicionales.Add(new PorcionAdicional(TipoPorcion.Carne, _porcionDAL.ObtenerPrecioPorcion(TipoPorcion.Carne)));
-            }
-            if (descripcionCompleta.Contains("+ Tomate"))
-            {
-                pedido.PorcionesAdicionales.Add(new PorcionAdicional(TipoPorcion.Tomate, _porcionDAL.ObtenerPrecioPorcion(TipoPorcion.Tomate)));
-            }
-            if (descripcionCompleta.Contains("+ Papas"))
-            {
-                pedido.PorcionesAdicionales.Add(new PorcionAdicional(TipoPorcion.Papas, _porcionDAL.ObtenerPrecioPorcion(TipoPorcion.Papas)));
-            }
 
             pedido.Total = _pedidoComponent.CalcularPrecio();
             return pedido;

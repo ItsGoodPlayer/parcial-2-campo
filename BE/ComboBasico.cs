@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace BE
 {
-    public class ComboBasico : Combo, IPedidoComponent
+    public class ComboBasico : Combo
     {
         public ComboBasico()
         {
@@ -13,19 +13,9 @@ namespace BE
             Tipo = TipoCombo.Basico;
         }
 
-        public string ObtenerDescripcion()
-        {
-            return Nombre;
-        }
-
-        public List<string> ObtenerIngredientes()
+        public override List<string> ObtenerIngredientes()
         {
             return new List<string> { "Hamburguesa simple", "Papas chicas", "Gaseosa" };
-        }
-
-        public TipoCombo ObtenerTipoComboBase()
-        {
-            return Tipo;
         }
     }
 }
